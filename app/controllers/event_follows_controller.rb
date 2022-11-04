@@ -1,0 +1,2 @@
+class EventFollowsController < ApplicationController
+end
