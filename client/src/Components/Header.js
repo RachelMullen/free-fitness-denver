@@ -1,24 +1,31 @@
-// import { Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Logout ({ user, setUser }) {
-    const [ isLogout , setIsLogout ] = useState(false);
-
-    function handleLogout() {
-        fetch("/logout", { method: "DELETE" }).then((r) => {
-          if (r.ok) {
-            setUser(null);
-            setIsLogout(true);
-          }
-        });
+export default function NavBar({ user, setUser, updateUser }) {
+  function handleLogout() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(false);
       }
-
-    return (
-        <>
-            {/* FORWARD PATH */}
-            {/* { isLogout ? <Navigate to="/" /> : null} */}
-
-            <button onClick={handleLogout}>Log Out</button>
-        </>
-    )
+    });
+  }
+  return (
+    <>
+      <div className="navbar">
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/"> Home</Link>
+        </li>
+        <li>
+          <Link to="/signup">Sign Up</Link>
+        </li>
+        <li>
+          <Link to="/login">Log In</Link>
+        </li>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    </>
+  );
 }
