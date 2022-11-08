@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function NavBar({ user, setUser, updateUser }) {
+export default function NavBar({ updateUser }) {
+  //Logs out current user
   function handleLogout() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        setUser(false);
+        updateUser(false);
       }
     });
   }
@@ -18,12 +19,18 @@ export default function NavBar({ user, setUser, updateUser }) {
         <li>
           <Link to="/"> Home</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/signup">Sign Up</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/login">Log In</Link>
         </li>
+        {/* <li>
+          <Link to="/events">Events</Link>
+        </li>
+        <li>
+          <Link to="/profile/:id">Profile</Link>
+        </li> */}
         <button onClick={handleLogout}>Logout</button>
       </div>
     </>

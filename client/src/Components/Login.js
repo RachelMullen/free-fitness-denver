@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function Login({ onLogin }) {
-  const [username, setUsername] = useState("");
+export default function Login({ updateUser }) {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  //   const history = useHistory();
+    const navigate = useNavigate();
 
+  //Logs in User
   function handleSubmit(e) {
     let user = {
-      username: username,
+      email: email,
       password: password,
     };
     e.preventDefault();
@@ -24,8 +25,8 @@ export default function Login({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
-        // history(`/`);
+        r.json().then((user) => updateUser(user));
+        navigate(`/users/${user.id}`)
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -37,13 +38,13 @@ export default function Login({ onLogin }) {
       This is the login page
       <form onSubmit={handleSubmit}>
         <p>
-          <label>Username</label>
+          <label>Email</label>
           <input
             type="text"
-            id="username"
+            id="email"
             autoComplete="off"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </p>
         <p>

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useNavigate } from "react";
 
-export default function SignUp({ onLogin }) {
+export default function SignUp({ updateUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -9,9 +9,21 @@ export default function SignUp({ onLogin }) {
   const [bio, setBio] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate()
 
+
+
+//Signs up new user
   function handleSubmit(e) {
     e.preventDefault();
+    const user = {
+      email,
+      password,
+      password_confirmation: passwordConfirmation,
+      name,
+      attachment,
+      bio,
+  }
     setErrors([]);
     setIsLoading(true);
     fetch("/signup", {
@@ -19,18 +31,13 @@ export default function SignUp({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email,
-        password,
-        password_confirmation: passwordConfirmation,
-        name,
-        attachment,
-        bio,
-      }),
+      body: JSON.stringify(user),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => updateUser(user));
+        navigate(`/users/${user.id}`)
+
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
