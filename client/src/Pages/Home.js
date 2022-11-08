@@ -1,10 +1,9 @@
-import { useState } from "react";
-import Login from "../Components/Login";
-import SignUp from "../Components/SignUp";
+import React from "react";
+import { Link } from "react-router-dom";
+// import OrganizationList from "../Components/OrganizationList";
+// import EventList from "../Components/EventList";
 
-export default function Home({ onLogin, updateUser }) {
-  const [showLogin, setShowLogin] = useState(true);
-
+export default function Home() {
   return (
     <>
       <div>THIS IS THE HOME PAGE! BIG PICTURE GOES HERE</div>
@@ -13,25 +12,16 @@ export default function Home({ onLogin, updateUser }) {
         bike rides, hikes, to pub runs, free fitness is everywhere, especially
         in Denver. View and save your favorite opportunities and get moving!
       </div>
-      <div>EVENTS NEAR YOU</div>
+      {/* <div><EventList events={events} /></div>
+      <div><OrganizationList organizations={organizations}/></div> */}
       <div>THIS IS WHERE I NEED TO MAP EVENT CARDS</div>
-      {showLogin ? (
-        <>
-          <Login onLogin={onLogin} />
-          <p>
-            Don't have an account? &nbsp;
-            <button onClick={() => setShowLogin(false)}>Sign Up</button>
-          </p>
-        </>
-      ) : (
-        <>
-          <SignUp onLogin={onLogin} />
-          <p>
-            Already have an account? &nbsp;
-            <button onClick={() => setShowLogin(true)}>Log In</button>
-          </p>
-        </>
-      )}
+      <p>
+        <Link to="/signup">Signup</Link>
+      </p>
+      <p>
+        Already have an account?
+        <Link to="/login">Login</Link>
+      </p>
     </>
   );
 }

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # AUTHENTICATION/AUTHORIZATION ROUTES
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
+  get "/logged_in", to: "sessions#logged_in"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 

@@ -5,7 +5,6 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(false);
 
-
   useEffect(() => {
     fetch(`/users/$(user.id)`).then((res) => {
       if (res.ok) {
@@ -18,6 +17,7 @@ export default function Profile() {
       }
     });
   }, []);
+
   if (loading) return <h1>Loading</h1>;
   if (errors) return <h1>{errors}</h1>;
   return (
@@ -27,6 +27,8 @@ export default function Profile() {
         <h1>{user.name}</h1>
         <h2>{user.email}</h2>
         <h2>{user.bio}</h2>
+        <button>Edit Profile</button>
+        <button>Delete Profile</button>
       </div>
     </>
   );

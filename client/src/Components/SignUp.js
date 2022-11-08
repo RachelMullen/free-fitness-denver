@@ -1,29 +1,27 @@
-import React, { useState, useNavigate } from "react";
+import React, { useState } from "react";
+import  { useNavigate } from 'react-router-dom'
 
-export default function SignUp({ updateUser }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [name, setName] = useState("");
-  const [attachment, setAttachment] = useState("");
-  const [bio, setBio] = useState("");
+export default function SignUp({ setUser, setLoggedIn }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+    attachement: "",
+    bio: "",
+  });
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate()
+  const { name, email, password, password_confirmation, attachment, bio } = formData;
 
-
-
-//Signs up new user
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  }
+  //Signs up new user
   function handleSubmit(e) {
     e.preventDefault();
-    const user = {
-      email,
-      password,
-      password_confirmation: passwordConfirmation,
-      name,
-      attachment,
-      bio,
-  }
     setErrors([]);
     setIsLoading(true);
     fetch("/signup", {
@@ -31,13 +29,14 @@ export default function SignUp({ updateUser }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(formData),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => updateUser(user));
-        navigate(`/users/${user.id}`)
-
+        r.json().then((formData) =>
+          setUser(formData));
+          setLoggedIn(formData);
+        navigate(`/profile`)
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -55,7 +54,7 @@ export default function SignUp({ updateUser }) {
             id="email"
             autoComplete="off"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
           />
         </p>
         <p>
@@ -64,7 +63,7 @@ export default function SignUp({ updateUser }) {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleChange}
             autoComplete="current-password"
           />
         </p>
@@ -75,8 +74,8 @@ export default function SignUp({ updateUser }) {
           <input
             type="password"
             id="password_confirmation"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            value={password_confirmation}
+            onChange={handleChange}
             autoComplete="current-password"
           />
         </p>
@@ -86,7 +85,7 @@ export default function SignUp({ updateUser }) {
             type="text"
             id="name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={handleChange}
           />
         </p>
         <p>
@@ -95,7 +94,7 @@ export default function SignUp({ updateUser }) {
             type="text"
             id="attachement"
             value={attachment}
-            onChange={(e) => setAttachment(e.target.value)}
+            onChange={handleChange}
           />
         </p>
         <p>
@@ -104,7 +103,7 @@ export default function SignUp({ updateUser }) {
             type="text"
             id="bio"
             value={bio}
-            onChange={(e) => setBio(e.target.value)}
+            onChange={handleChange}
           />
         </p>
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>

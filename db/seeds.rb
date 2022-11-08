@@ -2,7 +2,7 @@ User.destroy_all
 
 user1 = User.create!(
     email: "rachel@example.com",
-    password_digest: "123", 
+    password: "123", 
     name: "Rachel Mullen",
     bio: "I love running and community!",
     attachment: "TODO")
@@ -16,21 +16,21 @@ user2 = User.create!(
 
 user3 = User.create!(
     email: "teresa@example.com",
-    password_digest: "123", 
+    password: "123", 
     name: "Teresa Krug",
     bio: "I take hiking photos for Instagram!",
     attachment: "TODO")
 
 user4 = User.create!(
   email: "elise@example.com",
-  password_digest: "123", 
+  password: "123", 
   name: "Elise Mullen",
   bio: "I drive to the top of 14ers!",
   attachment: "TODO")
 
 user5 = User.create!(
   email: "smokey@example.com",
-  password_digest: "123", 
+  password: "123", 
   name: "Smokey TheDog",
   bio: "I'm a good boy!",
   attachment: "TODO")

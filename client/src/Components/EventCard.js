@@ -1,17 +1,21 @@
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-function EventCard({ event }) {
-    const { title, budget, genre, image, id } = event
+export default function EventCard({ event }) {
+  const { name, attachment, date, time, id, organization_id } = event;
+  console.log(event);
 
-    return (
-
-            <div>
-                <Link to={`/productions/${id}`}> <h2>{title}</h2></Link>
-                <p>{genre}</p>
-                <p>$ {budget}</p>
-            </div>
-            <img src={image} />
-    
-     
-    );
+  return (
+    <div>
+      <Link to={`/events/${id}`}>
+        <h2>{name}</h2>
+        <p>
+          <img src={attachment} alt={name} />
+        </p>
+        <p>{date}</p>
+        <p>{time}</p>
+        <p>{organization_id}</p>
+      </Link>
+    </div>
+  );
 }

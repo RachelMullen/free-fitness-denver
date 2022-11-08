@@ -1,12 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-export default function NavBar({ updateUser }) {
+export default function NavBar({ user, setUser, loggedIn, setLoggedIn }) {
   //Logs out current user
+  let navigate = useNavigate();
+  
+
   function handleLogout() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        updateUser(false);
+        setUser(null);
+        setLoggedIn(false);
+        navigate("/");
       }
     });
   }
@@ -14,24 +19,38 @@ export default function NavBar({ updateUser }) {
     <>
       <div className="navbar">
         <li>
-          <Link to="/about">About</Link>
+          <NavLink to="/"> Home </NavLink>
         </li>
         <li>
-          <Link to="/"> Home</Link>
+          <NavLink to="/about">About</NavLink>
         </li>
-        {/* <li>
-          <Link to="/signup">Sign Up</Link>
-        </li> */}
-        <li>
-          <Link to="/login">Log In</Link>
-        </li>
-        {/* <li>
-          <Link to="/events">Events</Link>
-        </li>
-        <li>
-          <Link to="/profile/:id">Profile</Link>
-        </li> */}
-        <button onClick={handleLogout}>Logout</button>
+        {loggedIn ? (
+          <div>
+            <li>
+              <NavLink to="/" onClick={handleLogout}>
+                Logout
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/profile">Profile</NavLink>
+            </li>
+            <li>
+              <NavLink to="/organizations">Organizations</NavLink>
+            </li>
+            <li>
+              <NavLink to="/events">Events</NavLink>
+            </li>
+          </div>
+        ) : (
+          <div>
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+            <li>
+              <NavLink to="/signup">Sign up</NavLink>
+            </li>
+          </div>
+        )}
       </div>
     </>
   );
