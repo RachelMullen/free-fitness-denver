@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Login({setUser}) {
+export default function Login({ updateUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  //TO DO:
 
   //Logs in User
   function handleSubmit(e) {
@@ -25,8 +27,8 @@ export default function Login({setUser}) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => setUser(user));
-        navigate(`/profile`)
+        r.json().then((user) => updateUser(user));
+        navigate(`/profile`);
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -40,9 +42,9 @@ export default function Login({setUser}) {
         <p>
           <label>Email</label>
           <input
-            type="text"
+            type="email"
             id="email"
-            autoComplete="off"
+            placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -52,7 +54,7 @@ export default function Login({setUser}) {
           <input
             type="password"
             id="password"
-            autoComplete="current-password"
+            placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -62,9 +64,9 @@ export default function Login({setUser}) {
           <Link to="/signup">Signup</Link>
         </div>
         <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
-        {errors.map((err) => (
+        {/* {errors.map((err) => (
           <error key={err}>{err}</error>
-        ))}
+        ))} */}
       </form>
     </>
   );

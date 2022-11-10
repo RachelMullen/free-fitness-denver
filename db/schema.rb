@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_06_001054) do
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.integer "organizer_id"
-    t.string "attachment"
+    t.string "attachment", default: "https://ctorthopaedic.com/wp-content/uploads/2017/01/profile-silhouette.jpg"
     t.string "description"
     t.string "announcements"
     t.string "link"

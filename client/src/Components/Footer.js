@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 // import CssBaseline from '@mui/material/CssBaseline';
 // import Box from '@mui/material/Box';
 // import Typography from '@mui/material/Typography';
@@ -19,10 +19,7 @@ import * as React from 'react';
 // }
 
 export default function Footer() {
-
-  return (
-<div>Made by Rachel Mullen </div>
-  )
+  return <div>Made by Rachel Mullen </div>;
 }
 //   return (
 //     <Box

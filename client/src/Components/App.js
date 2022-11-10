@@ -10,6 +10,11 @@ import Footer from "./Footer";
 import Profile from "../Pages/Profile";
 import OrganizationList from "./OrganizationList";
 import EventList from "./EventList";
+import EventDetails from "./EventList";
+import OrganizationDetails from "./EventList";
+import ProfileEdit from "./ProfileEdit";
+
+//TO DO:
 
 export default function App() {
   const [user, setUser] = useState({});
@@ -21,7 +26,7 @@ export default function App() {
     fetch("/me").then((r) => {
       if (r.ok) {
         setLoggedIn(true);
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => updateUser(user));
       }
       // fetchEvents();
       // fetchOrganizations();
@@ -32,16 +37,18 @@ export default function App() {
     });
   }, [loggedIn]);
 
+  const deleteUser = (id) => setUser((user) => user.filter((p) => p.id !== id));
+  const updateUser = (user) => setUser(user);
+
   if (errors) return <h1>{errors}</h1>;
 
   return (
     <>
       <Router>
         <Header
-          user={user}
-          setUser={setUser}
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
+          updateUser={updateUser}
         />
         <div>
           <Routes>
@@ -49,31 +56,30 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route
               path="/signup"
-              element={<SignUp setUser={setUser} setLoggedIn={setLoggedIn} />}
+              element={
+                <SignUp updateUser={updateUser} setLoggedIn={setLoggedIn} />
+              }
             />
-            <Route path="login" element={<Login setUser={setUser} />} />
+            <Route path="login" element={<Login updateUser={updateUser} />} />
             <Route
               exact
               path="/profile"
-              element={<Profile user={user} setUser={setUser} />}
+              element={<Profile updateUser={updateUser} />}
+            />
+            <Route path="/organizations" element={<OrganizationList />} />
+            <Route path="/events" element={<EventList />} />
+            <Route path="/events/:id" element={<EventDetails />} />
+            <Route
+              path="/organizations/:id"
+              element={<OrganizationDetails />}
             />
             <Route
-              path="/organizations"
+              path="/profile/:id"
               element={
-                <OrganizationList
+                <ProfileEdit
                   user={user}
-                  setUser={setUser}
-                  setLoggedIn={setLoggedIn}
-                />
-              }
-            />
-            <Route
-              path="/events"
-              element={
-                <EventList
-                  user={user}
-                  setUser={setUser}
-                  setLoggedIn={setLoggedIn}
+                  deleteUser={deleteUser}
+                  updateUser={updateUser}
                 />
               }
             />

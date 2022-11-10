@@ -1,20 +1,23 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-export default function NavBar({ user, setUser, loggedIn, setLoggedIn }) {
-  //Logs out current user
-  let navigate = useNavigate();
-  
+//TO DO: Won't load new navigation except for on refresh.
 
+export default function NavBar({ updateUser, loggedIn, setLoggedIn }) {
+  let navigate = useNavigate();
+
+  //Logs out current user
   function handleLogout() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        setUser(null);
+        updateUser(null);
         setLoggedIn(false);
         navigate("/");
       }
     });
   }
+
+  //renders custom navigation
   return (
     <>
       <div className="navbar">

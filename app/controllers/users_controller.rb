@@ -24,14 +24,14 @@ class UsersController < ApplicationController
     # end
 
     ## SHOW CURRENT USER DETAILS
-    def show_user id
-        user = User.find(params[:id])
-        render json: user
-    end
+    # def show_user id
+    #     user = User.find(params[:id])
+    #     render json: user
+    # end
 
     ## UPDATE CURRENT USER
     def update
-        @current_user.update(user_params)
+        @current_user.update!(user_params)
         render json: @current_user
     end
 
@@ -44,6 +44,6 @@ class UsersController < ApplicationController
     private
     
     def user_params
-        params.permit(:email, :password, :password_confirmation, :name, :bio, :email, :attachment)
+        params.permit(:id, :email, :password, :password_confirmation, :name, :bio, :attachment, :profile_picture)
     end
 end

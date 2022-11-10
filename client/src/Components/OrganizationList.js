@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import OrganizationCard from "../Components/OrganizationCard";
 
+//TO DO:
+
 export default function OrganizationList() {
   const [organizations, setOrganizations] = useState([]);
 
@@ -9,7 +11,6 @@ export default function OrganizationList() {
       .then((r) => r.json())
       .then((organizations) => {
         setOrganizations(organizations);
-        console.log(organizations);
       });
   }, []);
 
@@ -19,7 +20,6 @@ export default function OrganizationList() {
     );
   });
 
-  console.log(organizations);
   return (
     <div>
       Organizations are here

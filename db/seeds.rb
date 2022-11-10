@@ -5,35 +5,35 @@ user1 = User.create!(
     password: "123", 
     name: "Rachel Mullen",
     bio: "I love running and community!",
-    attachment: "TODO")
+    attachment: "https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
 
 user2 = User.create!(
     email: "dj@example.com",
-    password_digest: "123", 
+    password: "123", 
     name: "DJ Reichel",
     bio: "Rather be snowboarding!",
-    attachment: "TODO")
+    attachment: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrsQCMmFMku-sq8mvpzprUgWZMt3DAYA-9PLpSBvJy&s")
 
 user3 = User.create!(
     email: "teresa@example.com",
     password: "123", 
     name: "Teresa Krug",
     bio: "I take hiking photos for Instagram!",
-    attachment: "TODO")
+    attachment: "https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
 
 user4 = User.create!(
   email: "elise@example.com",
   password: "123", 
   name: "Elise Mullen",
   bio: "I drive to the top of 14ers!",
-  attachment: "TODO")
+  attachment: "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
 
 user5 = User.create!(
   email: "smokey@example.com",
   password: "123", 
   name: "Smokey TheDog",
   bio: "I'm a good boy!",
-  attachment: "TODO")
+  attachment: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrsQCMmFMku-sq8mvpzprUgWZMt3DAYA-9PLpSBvJy&s")
 
 p "Created Users!"
 
