@@ -11,7 +11,7 @@ class UserSerializer < ActiveModel::Serializer
   # has_many :organizations, through: :organization_follows
 
   def profile_picture
-    rails_blob_path(object.profile_picture, only_path: true) if profile_picture.attached?
-end
+    rails_blob_path(object.profile_picture, only_path: true) if object.profile_picture.attached?
+  end
 
 end
