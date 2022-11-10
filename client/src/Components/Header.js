@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 //TO DO: Won't load new navigation except for on refresh.
 
-export default function NavBar({ updateUser, loggedIn, setLoggedIn }) {
+export default function Header({ updateUser, loggedIn, setLoggedIn }) {
   let navigate = useNavigate();
 
   //Logs out current user
@@ -16,7 +16,6 @@ export default function NavBar({ updateUser, loggedIn, setLoggedIn }) {
       }
     });
   }
-
   //renders custom navigation
   return (
     <>

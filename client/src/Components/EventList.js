@@ -17,14 +17,11 @@ export default function EventList() {
       });
   }, []);
 
-  const eventCollection = events.map((event) => {
-    return <EventCard key={event.id} event={event} />;
-  });
+  const eventCollection =
+    events &&
+    events.map((event) => {
+      return <EventCard key={event.id} event={event} />;
+    });
 
-  return (
-    <div>
-      Events are here
-      {eventCollection}
-    </div>
-  );
+  return <div>{eventCollection}</div>;
 }

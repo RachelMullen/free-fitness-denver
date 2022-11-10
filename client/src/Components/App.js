@@ -14,14 +14,14 @@ import EventDetails from "./EventList";
 import OrganizationDetails from "./EventList";
 import ProfileEdit from "./ProfileEdit";
 
-//TO DO:
+//TO DO: issue with logout now with terinary
 
 export default function App() {
   const [user, setUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
   const [errors, setErrors] = useState(false);
 
-  //Grabs user information for Global State
+  //Grabs user information for authentication and authorization
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
@@ -60,9 +60,13 @@ export default function App() {
                 <SignUp updateUser={updateUser} setLoggedIn={setLoggedIn} />
               }
             />
-            <Route path="login" element={<Login updateUser={updateUser} />} />
             <Route
-              exact
+              path="login"
+              element={
+                <Login updateUser={updateUser} setLoggedIn={setLoggedIn} />
+              }
+            />
+            <Route
               path="/profile"
               element={<Profile updateUser={updateUser} />}
             />

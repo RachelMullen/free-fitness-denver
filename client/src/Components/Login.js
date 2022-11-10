@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Login({ updateUser }) {
+//TO DO:
+
+export default function Login({ updateUser, setLoggedIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
-  //TO DO:
 
   //Logs in User
   function handleSubmit(e) {
@@ -28,6 +28,7 @@ export default function Login({ updateUser }) {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => updateUser(user));
+        setLoggedIn(true);
         navigate(`/profile`);
       } else {
         r.json().then((err) => setErrors(err.errors));
@@ -37,7 +38,6 @@ export default function Login({ updateUser }) {
 
   return (
     <>
-      This is the login page
       <form onSubmit={handleSubmit}>
         <p>
           <label>Email</label>
@@ -64,9 +64,9 @@ export default function Login({ updateUser }) {
           <Link to="/signup">Signup</Link>
         </div>
         <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
-        {/* {errors.map((err) => (
+        {errors.map((err) => (
           <error key={err}>{err}</error>
-        ))} */}
+        ))}
       </form>
     </>
   );

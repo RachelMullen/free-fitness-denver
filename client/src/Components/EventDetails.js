@@ -1,7 +1,7 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
-//TO DO:
+//TO DO: User can follow Event
 
 export default function EventDetail({ deleteEvent }) {
   const [event, setEvent] = useState({});

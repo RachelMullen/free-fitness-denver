@@ -14,7 +14,7 @@ export default function OrganizationList() {
       });
   }, []);
 
-  const orgCollection = organizations.map((organization) => {
+  const orgCollection = organizations && organizations.map((organization) => {
     return (
       <OrganizationCard key={organization.id} organization={organization} />
     );
@@ -22,7 +22,6 @@ export default function OrganizationList() {
 
   return (
     <div>
-      Organizations are here
       {orgCollection}
     </div>
   );

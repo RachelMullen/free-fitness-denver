@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 //TO DO:
-//Get existing data to populate on page load.
 //Validations causing problems (have to enter PW and Email no matter)
 
 export default function ProfileEdit({ user, updateUser, deleteUser }) {
@@ -15,9 +14,9 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
   const [profilePicture, setProfilePicture] = useState(null);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [id, setId] = useState("");
+  // const [id, setId] = useState("");
   const navigate = useNavigate();
-  const params = useParams();
+  // const params = useParams();
   // useEffect(() => {
   //   fetch(`/users/${id}`)
   //     .then((res) => res.json())
@@ -32,12 +31,12 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
     const formData = new FormData();
     formData.append("email", email);
     formData.append("name", name);
-    formData.append("id", id);
+    // formData.append("id", id);
     formData.append("password", password);
     formData.append("password_confirmation", passwordConfirmation);
     formData.append("bio", bio);
     formData.append("profile_picture", profilePicture);
-    fetch(`/users/${params.id}`, {
+    fetch(`/profile/:id`, {
       method: "PATCH",
       body: formData,
     }).then((r) => {
@@ -51,27 +50,23 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
     });
   }
 
+
   function handleDelete() {
-    fetch(`/users/${params.id}`, {
+    fetch(`/profile/:id`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
-    }).then((res) => {
-      if (res.ok) {
-        deleteUser(id);
+    }).then((r) => {
+      if (r.ok) {
+        deleteUser(user.id);
         navigate("/");
       } else {
-        res
-          .json()
-          .then((data) =>
-            setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`))
-          );
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }
 
   return (
     <>
-      <div> This is the edit profile page</div>
       <form onSubmit={handleSubmit}>
         <p>
           <label>Update Email</label>
@@ -137,10 +132,10 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
         <button type="submit">
           {isLoading ? "Loading..." : "Update User"}
         </button>
-        {/* <button type="button" onClick={handleDelete}>
+        <button type="button" onClick={handleDelete}>
           Delete User
         </button>
-        {errors.map((err) => (
+        {/* {errors.map((err) => (
           <error key={err}>{err}</error>
         ))} */}
       </form>

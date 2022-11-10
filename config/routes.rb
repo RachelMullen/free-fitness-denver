@@ -1,27 +1,15 @@
 Rails.application.routes.draw do
+
   resources :organizations do
+  # nested resource for events and organizers
     resources :events
     resources :organizer
   end
-  resources :organization_follows do
-    resources :organization
-    resources :follower
-  end
-  resources :events do
-    resources :organization
-    resources :organizer
-  end
-  resources :event_follows do
-    resources :event
-    resources :follower
-  end
-  resources :users do
-    resources :event_follows
-    resources :events
-    resources :organization_follows
-    resource  :organizations
-  end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  resources :organization_follows 
+  resources :events 
+  resources :event_follows 
+  resources :users 
 
   # AUTHENTICATION/AUTHORIZATION ROUTES
   post "/signup", to: "users#create"
@@ -29,9 +17,9 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-#PROFILE
-get "/profile/:id", to: "users#destroy"
-patch "/profile/:id", to: "users#update"
+  #PROFILE
+  patch "/profile/:id", to: "users#update"
+  get "/profile/:id", to: "users#destroy"
 
   get '*path',
       to: 'fallback#index',

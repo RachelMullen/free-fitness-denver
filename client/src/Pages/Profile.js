@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-//TO DO:
+//TO DO: Show:
+//List of followed organizations and events
+//List of events and organizations user owns
+// Ability to edit owned organizations
+// List of followed events and organizations
 
 export default function Profile() {
   const [user, setUser] = useState();
@@ -9,7 +13,7 @@ export default function Profile() {
   const [errors, setErrors] = useState(false);
   const navigate = useNavigate();
   const params = useParams();
-
+  const { id } = params;
   useEffect(() => {
     fetch(`/users/${params.id}`).then((res) => {
       if (res.ok) {
