@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-// import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 //TO DO:
-//Validations causing problems (have to enter PW and Email no matter)
 
 export default function ProfileEdit({ user, updateUser, deleteUser }) {
   const [email, setEmail] = useState("");
@@ -16,7 +14,7 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
   const [isLoading, setIsLoading] = useState(false);
   // const [id, setId] = useState("");
   const navigate = useNavigate();
-  // const params = useParams();
+  const {id} = useParams();
   // useEffect(() => {
   //   fetch(`/users/${id}`)
   //     .then((res) => res.json())
@@ -36,7 +34,7 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
     formData.append("password_confirmation", passwordConfirmation);
     formData.append("bio", bio);
     formData.append("profile_picture", profilePicture);
-    fetch(`/profile/:id`, {
+    fetch(`/profile/${id}`, {
       method: "PATCH",
       body: formData,
     }).then((r) => {
@@ -52,7 +50,7 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
 
 
   function handleDelete() {
-    fetch(`/profile/:id`, {
+    fetch(`/profile/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     }).then((r) => {
@@ -73,8 +71,8 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
           <input
             type="email"
             name="email"
-            placeholder={user.email}
-            defaultValue={email}
+            // placeholder={user.email}
+            defaultValue={user.email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </p>
@@ -83,8 +81,8 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
           <input
             type="password"
             name="password"
-            placeholder={user.password}
-            defaultValue={password}
+            // placeholder={user.password}
+            defaultValue={user.password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </p>
@@ -105,8 +103,8 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
           <input
             type="text"
             name="name"
-            defaultValue={name}
-            placeholder={user.name}
+            defaultValue={user.name}
+            // placeholder={user.name}
             onChange={(e) => setName(e.target.value)}
           />
         </p>
@@ -124,8 +122,8 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
           <input
             type="text"
             name="bio"
-            defaultValue={bio}
-            placeholder={user.bio}
+            defaultValue={user.bio}
+            // placeholder={user.bio}
             onChange={(e) => setBio(e.target.value)}
           />
         </p>

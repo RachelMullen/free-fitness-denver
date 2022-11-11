@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
     def update
         @current_user.update!(user_params)
+        binding.break   
         render json: @current_user, status: :accepted
     end
 

@@ -5,12 +5,11 @@ import React, { useEffect, useState } from "react";
 // User can follow Organization
 
 export default function OrganizationDetails() {
-  const [organization, setOrganization] = useState({});
+  const [organization, setOrganization] = useState({ events: [] });
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(false);
 
   const { id } = useParams();
-
   useEffect(() => {
     //GET to '/organizations/:id'
     fetch(`/organizations/${id}`).then((r) => {
@@ -53,14 +52,13 @@ export default function OrganizationDetails() {
         <div>
           <p>{organization.description}</p>
           <p>{organization.announcements}</p>
-          <h2>{organization.link}</h2>
-          <h2>{organization.social_media}</h2>
+          <h2><Link to={organization.link}> Website</Link></h2>
+          <h2><Link to={organization.social_media}>Socials</Link></h2>
           <ul>
-            <Link to={`/events/${id}`}>
-              {organization.events.map((event) => (
-                <li>{event.name}</li>
-              ))}{" "}
-            </Link>
+            EVENTS:
+            {organization.events.map((event) => (
+              <Link to={`/events/${id}/`}>{event.name}</Link>
+            ))}
           </ul>
         </div>
         <img src={organization.attachment} alt={organization.name} />

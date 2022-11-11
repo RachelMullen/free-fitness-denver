@@ -1,12 +1,11 @@
 class OrganizationsController < ApplicationController
-
+    # skip_before_action :authorize
 
     def index
         render json: Organization.all.order(:name), status: :ok
     end
 
     def show
-        binding.break
         organization = Organization.find(params[:id])
         render json: organization, include: :events, status: :ok
     end

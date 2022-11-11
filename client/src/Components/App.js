@@ -10,8 +10,8 @@ import Footer from "./Footer";
 import Profile from "../Pages/Profile";
 import OrganizationList from "./OrganizationList";
 import EventList from "./EventList";
-import EventDetails from "./EventList";
-import OrganizationDetails from "./EventList";
+import EventDetails from "./EventDetails";
+import OrganizationDetails from "./OrganizationDetails";
 import ProfileEdit from "./ProfileEdit";
 
 //TO DO: issue with logout now with terinary
@@ -70,13 +70,13 @@ export default function App() {
               path="/profile"
               element={<Profile updateUser={updateUser} />}
             />
-            <Route path="/organizations" element={<OrganizationList />} />
-            <Route path="/events" element={<EventList />} />
-            <Route path="/events/:id" element={<EventDetails />} />
+            <Route exact path="/organizations" element={<OrganizationList />} />
             <Route
               path="/organizations/:id"
               element={<OrganizationDetails />}
             />
+            <Route path="/events" element={<EventList />} />
+            <Route path="/events/:id" element={<EventDetails />} />
             <Route
               path="/profile/:id"
               element={

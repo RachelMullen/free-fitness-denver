@@ -12,10 +12,9 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(false);
   const navigate = useNavigate();
-  const params = useParams();
-  const { id } = params;
+  const { id } = useParams();
   useEffect(() => {
-    fetch(`/users/${params.id}`).then((res) => {
+    fetch(`/users/${id}`).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
           setUser(user);
@@ -30,7 +29,7 @@ export default function Profile() {
   if (loading) return <h1>Loading</h1>;
   if (errors) return <h1>{errors}</h1>;
 
-  const profileEdit = () => navigate(":id/");
+  const profileEdit = () => navigate(`/profile/${user.id}/`);
 
   return (
     <>
