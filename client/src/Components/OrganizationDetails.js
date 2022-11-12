@@ -52,8 +52,12 @@ export default function OrganizationDetails() {
         <div>
           <p>{organization.description}</p>
           <p>{organization.announcements}</p>
-          <h2><Link to={organization.link}> Website</Link></h2>
-          <h2><Link to={organization.social_media}>Socials</Link></h2>
+          <h2>
+            <Link to={organization.link}> Website</Link>
+          </h2>
+          <h2>
+            <Link to={organization.social_media}>Socials</Link>
+          </h2>
           <ul>
             EVENTS:
             {organization.events.map((event) => (

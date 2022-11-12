@@ -14,7 +14,7 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
   const [isLoading, setIsLoading] = useState(false);
   // const [id, setId] = useState("");
   const navigate = useNavigate();
-  const {id} = useParams();
+  const { id } = useParams();
   // useEffect(() => {
   //   fetch(`/users/${id}`)
   //     .then((res) => res.json())
@@ -47,7 +47,6 @@ export default function ProfileEdit({ user, updateUser, deleteUser }) {
       }
     });
   }
-
 
   function handleDelete() {
     fetch(`/profile/${id}`, {

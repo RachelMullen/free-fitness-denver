@@ -5,11 +5,11 @@ import React, { useEffect, useState } from "react";
 //Link to organizaton name for this event
 
 export default function EventDetail({ deleteEvent }) {
-  const [event, setEvent] = useState({organization: []});
+  const [event, setEvent] = useState({ organization: [] });
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(false);
 
-  const {id} = useParams();
+  const { id } = useParams();
   useEffect(() => {
     //GET to '/events/:id'
     fetch(`/events/${id}`).then((r) => {
@@ -72,21 +72,26 @@ export default function EventDetail({ deleteEvent }) {
           <p>{event.date}</p>
           <p>{event.time}</p>
           <p>{event.location_name}</p>
-          <p>{event.address}, {event.city}, {event.state} {event.zip}</p>
+          <p>
+            {event.address}, {event.city}, {event.state} {event.zip}
+          </p>
           <p>{event.difficulty_distance}</p>
           <p>{event.category}</p>
 
-          <h2><Link to={event.link}> Website </Link></h2>
-          <h2><Link to={event.social_media}> Socials </Link></h2>
+          <h2>
+            <Link to={event.link}> Website </Link>
+          </h2>
+          <h2>
+            <Link to={event.social_media}> Socials </Link>
+          </h2>
           <ul>
-            ORGANIZATION:<Link to={`/organizations/${id}/`}>{event.organization.name}</Link>
+            ORGANIZATION:
+            <Link to={`/organizations/${id}/`}>{event.organization.name}</Link>
           </ul>
         </div>
         <img src={event.attachment} alt={event.name} />
       </div>
-      <button>
-        {/* <Link to={`/events/${id}/edit`}>Edit Event</Link> */}
-      </button>
+      <button>{/* <Link to={`/events/${id}/edit`}>Edit Event</Link> */}</button>
       {/* <button onClick={handleDelete}>Delete Event</button>
       <button onClick={handleEventFollow}>Follow Event</button> */}
     </div>

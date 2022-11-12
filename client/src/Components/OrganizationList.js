@@ -14,15 +14,13 @@ export default function OrganizationList() {
       });
   }, []);
 
-  const orgCollection = organizations && organizations.map((organization) => {
-    return (
-      <OrganizationCard key={organization.id} organization={organization} />
-    );
-  });
+  const orgCollection =
+    organizations &&
+    organizations.map((organization) => {
+      return (
+        <OrganizationCard key={organization.id} organization={organization} />
+      );
+    });
 
-  return (
-    <div>
-      {orgCollection}
-    </div>
-  );
+  return <div>{orgCollection}</div>;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import Button from '@mui/material/Button';
 
 //TO DO: Map sample of events and organizations
 
@@ -19,6 +20,7 @@ export default function Home() {
       <p>
         Already have an account?
         <Link to="/login">Login</Link>
+        {/* <Button></Button> */}
       </p>
     </>
   );
