@@ -22,5 +22,11 @@ export default function OrganizationList() {
       );
     });
 
-  return <div>{orgCollection}</div>;
+  return <div class="flex flex-wrap -mx-2 overflow-hidden">
+
+  <div class="my-2 px-2 w-1/3 overflow-hidden">
+{orgCollection}  </div>
+</div>;
 }
+
+

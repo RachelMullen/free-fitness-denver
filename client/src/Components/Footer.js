@@ -1,64 +1,50 @@
 import * as React from "react";
-// import CssBaseline from '@mui/material/CssBaseline';
-// import Box from '@mui/material/Box';
-// import Typography from '@mui/material/Typography';
-// import Container from '@mui/material/Container';
-// import Link from '@mui/material/Link';
+import { Link } from "react-router-dom";
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="text.secondary">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
 
 export default function Footer() {
-  return <div>Made by Rachel Mullen </div>;
+  return (
+    <footer class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+        © 2022 Rachel Mullen. All Rights Reserved.
+      </span>
+      <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+          <Link to="/about" class="mr-4 hover:underline md:mr-6">
+            About Free Fitness Denver
+          </Link>
+        </li>
+        <li>
+          <a
+            href="mailto:mullen.rachel@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mr-4 hover:underline md:mr-6"
+          >
+            Contact Rachel
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/racheljmullen/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mr-4 hover:underline md:mr-6"
+          >
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/RachelMullen"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mr-4 hover:underline md:mr-6"
+          >
+            GitHub
+          </a>
+        </li>
+      </ul>
+    </footer>
+  );
 }
-//   return (
-//     <Box
-//       sx={{
-//         display: 'flex',
-//         flexDirection: 'column',
-//         minHeight: '100vh',
-//       }}
-//     >
-//       <CssBaseline />
-//       <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="sm">
-//         <Typography variant="h2" component="h1" gutterBottom>
-//           Sticky footer
-//         </Typography>
-//         <Typography variant="h5" component="h2" gutterBottom>
-//           {'Pin a footer to the bottom of the viewport.'}
-//           {'The footer will move as the main element of the page grows.'}
-//         </Typography>
-//         <Typography variant="body1">Sticky footer placeholder.</Typography>
-//       </Container>
-//       <Box
-//         component="footer"
-//         // sx={{
-//         //   py: 3,
-//         //   px: 2,
-//         //   mt: 'auto',
-//         //   backgroundColor: (theme) =>
-//         //     theme.palette.mode === 'light'
-//         //       ? theme.palette.grey[200]
-//         //       : theme.palette.grey[800],
-//         // }}
-//       >
-//         <Container maxWidth="sm">
-//           <Typography variant="body1">
-//             My sticky footer can be found here.
-//           </Typography>
-//           <Copyright />
-//         </Container>
-//       </Box>
-//     </Box>
-//   );
-// }

@@ -1,6 +1,7 @@
 // export default function EditDeleteOrganization()
 // const { id, image, title, description, notes, rating } = spice;
 
+//TO DO:
 
 // function handleDelete() {
 //     //DELETE to `/organizations/${params.id}`
@@ -18,7 +19,7 @@
 //       }
 //     });
 // }
-  
+
 // return (
 // <button onClick={handleDelete}>Delete Organization</button>
 
