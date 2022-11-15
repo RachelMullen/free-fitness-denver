@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div class="text-center">
-      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-blue-600 dark:text-blue-500">
+      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-purple-600 dark:text-purple-500">
         Free Fitness.
         <span class="text-gray-900  dark:text-white">
           That's what we're all about.
@@ -22,7 +22,7 @@ export default function Home() {
       </p>
       <Link
         to="/signup"
-        class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+        class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-900"
       >
         SIGN UP{" "}
         <svg
@@ -43,7 +43,7 @@ export default function Home() {
         <p>
           <Link
             to="/login"
-            class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            class="inline-flex items-center font-medium text-purple-600 dark:text-purple-500 hover:underline"
           >
             Login
             <svg

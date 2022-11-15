@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: 'Oswald', system-ui, sans-serif;
+  }
+}
+
 /* Box sizing rules */
 /* *,
 *::before,

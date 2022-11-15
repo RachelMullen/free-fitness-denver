@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: %i[create]
 
     def index
         render json:@current_user, status: :ok
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
     def update
         @current_user.update!(user_params)
-        binding.break   
         render json: @current_user, status: :accepted
     end
 

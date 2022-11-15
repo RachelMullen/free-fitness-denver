@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function SignUp({ setUser, setLoggedIn }) {
+export default function SignUp({ setCurrentUser, setLoggedIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   //Signs up new user
   function handleSubmit(e) {
     e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
 
     const formData = new FormData();
     formData.append("email", email);
@@ -24,92 +20,24 @@ export default function SignUp({ setUser, setLoggedIn }) {
     formData.append("password", password);
     formData.append("password_confirmation", passwordConfirmation);
     formData.append("bio", bio);
-    formData.append("profile_picture", profilePicture);
+    formData.append("profile_picture", profilePicture); 
+    
     fetch("/signup", {
       method: "POST",
       body: formData,
     }).then((r) => {
-      setIsLoading(false);
       if (r.ok) {
-        r.json().then(setUser);
-        setLoggedIn(true);
+        r.json().then((formData) => setCurrentUser(formData));
+        setLoggedIn(formData);
         navigate(`/profile`);
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
+      } 
     });
   }
 
   return (
-    //     <>
-    //       <form onSubmit={handleSubmit}>
-    //         <p>
-    //           <label>Email</label>
-    //           <input
-    //             type="email"
-    //             placeholder="email"
-    //             defaultValue={email}
-    //             onChange={(e) => setEmail(e.target.value)}
-    //           />
-    //         </p>
-    //         <p>
-    //           <label>Password</label>
-    //           <input
-    //             type="password"
-    //             placeholder="password"
-    //             defaultValue={password}
-    //             onChange={(e) => setPassword(e.target.value)}
-    //           />
-    //         </p>
-    //         <p>
-    //           <label>Password Confirmation</label>
-    //         </p>
-    //         <p>
-    //           <input
-    //             type="password"
-    //             placeholder="password_confirmation"
-    //             defaultValue={passwordConfirmation}
-    //             onChange={(e) => setPasswordConfirmation(e.target.value)}
-    //           />
-    //         </p>
-    //         <p>
-    //           <label>Name</label>
-    //           <input
-    //             type="text"
-    //             placeholder="name"
-    //             defaultValue={name}
-    //             onChange={(e) => setName(e.target.value)}
-    //           />
-    //         </p>
-    //         <p>
-    //           <label>Bio</label>
-    //           <input
-    //             type="text"
-    //             placeholder="bio"
-    //             defaultValue={bio}
-    //             onChange={(e) => setBio(e.target.value)}
-    //           />
-    //         </p>
-    //         <p>
-    //           <label>Profile Picture</label>
-    //           <input
-    //             type="file"
-    //             placeholder="upload photo"
-    //             accept="image/*"
-    //             onChange={(e) => setProfilePicture(e.target.files[0])}
-    //           />
-    //         </p>
-    //         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-    //         {errors.map((err) => (
-    //           <error key={err}>{err}</error>
-    //         ))}
-    //       </form>
-    //     </>
-    //   );
-    // }
-
+    //    MODAL
     // <button
-    //   class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    //   class="block text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
     //   type="button"
     //   data-modal-toggle="authentication-modal"
     // >
@@ -124,7 +52,7 @@ export default function SignUp({ setUser, setLoggedIn }) {
     // >
     <div class="relative p-4 w-full max-w-md h-full md:h-auto">
       {/* <!-- Modal content --> */}
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <div class="relative bg-white rounded-lg shadow-md dark:bg-gray-700">
         <button
           type="button"
           class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
@@ -147,7 +75,7 @@ export default function SignUp({ setUser, setLoggedIn }) {
         </button>
         <div class="py-6 px-6 lg:px-8">
           <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-            Log in
+            Sign Up
           </h3>
           <form onSubmit={handleSubmit} class="space-y-6" action="#">
             <div>
@@ -161,7 +89,7 @@ export default function SignUp({ setUser, setLoggedIn }) {
                 type="email"
                 name="email"
                 id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="email@email.com"
                 required=""
                 defaultValue={email}
@@ -180,7 +108,7 @@ export default function SignUp({ setUser, setLoggedIn }) {
                 name="password"
                 id="password"
                 placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 required=""
                 defaultValue={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -198,7 +126,7 @@ export default function SignUp({ setUser, setLoggedIn }) {
                 name="password"
                 id="password"
                 placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 required=""
                 defaultValue={passwordConfirmation}
                 onChange={(e) => setPasswordConfirmation(e.target.value)}
@@ -216,7 +144,7 @@ export default function SignUp({ setUser, setLoggedIn }) {
                 name="name"
                 id="name"
                 placeholder="First and Last"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 required=""
                 defaultValue={name}
                 onChange={(e) => setName(e.target.value)}
@@ -235,7 +163,7 @@ export default function SignUp({ setUser, setLoggedIn }) {
                 id="bio"
                 placeholder="Share some fun details about yourself!"
                 rows="4"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
                 required=""
                 defaultValue={bio}
                 onChange={(e) => setBio(e.target.value)}
@@ -252,7 +180,7 @@ export default function SignUp({ setUser, setLoggedIn }) {
               <input
                 type="file"
                 name="profile_picture"
-                id="bio"
+                id="profile_picture"
                 placeholder="Upload photo"
                 accept="image/*"
                 class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -262,7 +190,7 @@ export default function SignUp({ setUser, setLoggedIn }) {
             </div>
             <button
               type="submit"
-              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
             >
               Sign up
             </button>
@@ -271,15 +199,10 @@ export default function SignUp({ setUser, setLoggedIn }) {
               <p>
                 <Link
                   to="/login"
-                  class="text-blue-700 hover:underline dark:text-blue-500 font-bold"
+                  class="text-purple-700 hover:underline dark:text-purple-500 font-bold"
                 >
                   Login
                 </Link>
-              </p>
-              <p>
-                {errors.map((err) => (
-                  <error key={err}>{err}</error>
-                ))}
               </p>
             </div>
           </form>

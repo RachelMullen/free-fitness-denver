@@ -6,8 +6,6 @@ import React, { useEffect, useState } from "react";
 
 export default function EventDetail({ deleteEvent }) {
   const [event, setEvent] = useState({ organization: [] });
-  const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState(false);
 
   const { id } = useParams();
   useEffect(() => {
@@ -16,56 +14,18 @@ export default function EventDetail({ deleteEvent }) {
       if (r.ok) {
         r.json().then((event) => {
           setEvent(event);
-          setLoading(false);
         });
-      } else {
-        r.json().then((data) => setErrors(data.error));
-      }
+      } 
     });
   }, []);
 
-  // function handleDelete() {
-  //   //DELETE to `/organizations/${params.id}`
-  //   fetch(`/events/${params.id}`, {
-  //     method: "DELETE",
-  //     headers: { "Content-Type": "application/json" },
-  //   }).then((r) => {
-  //     if (r.ok) {
-  //       deleteEvent(id);
-  //       navigate("/");
-  //     } else {
-  //       r.json().then((data) =>
-  //         setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`))
-  //       );
-  //     }
-  //   });
-  // }
-
-  // const handleEventFollow = () => {
-  //   fetch(`/event_follows`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ event_id: id, user_id: 1 }),
-  //   }).then((res) => {
-  //     if (res.ok) {
-  //       navigate("/users/1");
-  //     } else {
-  //       res
-  //         .json()
-  //         .then((data) =>
-  //           setErrors(Object.entries(data.errors).map((e) => `${e[0]} ${e[1]}`))
-  //         );
-  //     }
-  //   });
-  // };
-
-  if (loading) return <h1>Loading</h1>;
-  if (errors) return <h1>{errors}</h1>;
 
   return (
-    <div>
+    <div class="flex justify-center flex-col flex-wrap items-center space-x-3 space-y-3 h-auto w-full">
+
+      <div class="item w-3/4 h-32">
       <h1>{event.name}</h1>
-      <div className="wrapper">
+
         <div>
           <p>{event.description}</p>
           <p>{event.announcements}</p>
@@ -88,7 +48,7 @@ export default function EventDetail({ deleteEvent }) {
             ORGANIZATION:
             <Link
               to={`/organizations/${id}/`}
-              class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              class="inline-flex items-center font-medium text-purple-600 dark:text-purple-500 hover:underline"
             >
               {event.organization.name}
               <svg
@@ -107,13 +67,13 @@ export default function EventDetail({ deleteEvent }) {
             </Link>
           </ul>
         </div>
-        <img class="max-w-lg h-auto rounded-lg" src={event.attachment} alt={event.name} />
+        <img
+          class="max-w-lg h-auto rounded-lg"
+          src={event.attachment}
+          alt={event.name}
+        />
       </div>
-      <button class="btn btn-primary">
-        {/* <Link to={`/events/${id}/edit`}>Edit Event</Link> */}
-      </button>
-      {/* <button onClick={handleDelete}>Delete Event</button>
-      <button onClick={handleEventFollow}>Follow Event</button> */}
+      {/* <button onClick={handleEventFollow}>Follow Event</button> */}
     </div>
   );
 }

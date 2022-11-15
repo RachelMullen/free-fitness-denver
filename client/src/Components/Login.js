@@ -3,42 +3,42 @@ import { Link, useNavigate } from "react-router-dom";
 
 //TO DO:
 
-export default function Login({ updateUser, setLoggedIn }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+export default function Login({ setCurrentUser, setLoggedIn }) {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
+
+  const { email, password } = formData;
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  }
 
   //Logs in User
   function handleSubmit(e) {
-    let user = {
-      email: email,
-      password: password,
-    };
     e.preventDefault();
-    setIsLoading(true);
     fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify(formData),
     }).then((r) => {
-      setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => updateUser(user));
-        setLoggedIn(true);
-        navigate(`/profile`);
-      } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((formData) => setCurrentUser(formData));
+        setLoggedIn(formData);
+        navigate("/profile");
       }
     });
   }
 
   return (
     // <button
-    //   class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    //   class="block text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
     //   type="button"
     //   data-modal-toggle="authentication-modal"
     // >
@@ -53,7 +53,7 @@ export default function Login({ updateUser, setLoggedIn }) {
     // >
     <div class="relative p-4 w-full max-w-md h-full md:h-auto">
       {/* <!-- Modal content --> */}
-      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <div class="relative bg-white rounded-lg shadow-md dark:bg-gray-700">
         <button
           type="button"
           class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
@@ -90,11 +90,11 @@ export default function Login({ updateUser, setLoggedIn }) {
                 type="email"
                 name="email"
                 id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="email@email.com"
                 required=""
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleChange}
               />
             </div>
             <div>
@@ -109,15 +109,15 @@ export default function Login({ updateUser, setLoggedIn }) {
                 name="password"
                 id="password"
                 placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 required=""
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handleChange}
               />
             </div>
             <button
               type="submit"
-              class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="w-full shadow-md text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
             >
               Login to your account
             </button>
@@ -126,15 +126,10 @@ export default function Login({ updateUser, setLoggedIn }) {
               <p>
                 <Link
                   to="/signup"
-                  class="text-blue-700 hover:underline dark:text-blue-500 font-bold"
+                  class="shadow-md text-purple-700 hover:underline dark:text-purple-500 font-bold"
                 >
                   Sign up
                 </Link>
-              </p>
-              <p>
-                {errors.map((err) => (
-                  <error key={err}>{err}</error>
-                ))}
               </p>
             </div>
           </form>

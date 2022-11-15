@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 //TO DO: Show:
 //List of followed organizations and events
@@ -7,45 +7,35 @@ import { useNavigate, useParams } from "react-router-dom";
 // Ability to edit owned organizations
 // List of followed events and organizations
 
-export default function Profile() {
-  const [user, setUser] = useState();
-  const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState(false);
+export default function Profile({ currentUser }) {
   const navigate = useNavigate();
-  const { id } = useParams();
-  useEffect(() => {
-    fetch(`/users/${id}`).then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          setUser(user);
-          setLoading(false);
-        });
-      } else {
-        res.json().then((data) => setErrors(data.error));
-      }
-    });
-  }, []);
 
-  if (loading) return <h1>Loading</h1>;
-  if (errors) return <h1>{errors}</h1>;
-
-  const profileEdit = () => navigate(`/profile/${user.id}/`);
+  console.log(currentUser)
+  function handleProfileEdit() {
+    navigate(`/profile/${currentUser.id}/`)
+  }
 
   return (
     <>
       <div>
-        <h1>Welcome {user.name}!</h1>
+        <h1>Welcome {currentUser.name}!</h1>
         <img
           class="w-96 h-96 rounded-full"
           alt="profile_picture"
-          src={user.profile_picture}
+          src={currentUser.profile_picture}
         />
-        <h2>{user.email}</h2>
-        <h2>{user.bio}</h2>
+        <h2>{currentUser.email}</h2>
+        <h2>{currentUser.bio}</h2>
+        <div> show User follows </div>
+        <div> show organization follows</div>
+        <div>create new organization</div>
+        <div> Show owned organizations</div>
+        <div>create new event</div>
+        <div> show owned events </div>
         <button
-          onClick={profileEdit}
+          onClick={handleProfileEdit}
           type="button"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
         >
           <svg
             aria-hidden="true"

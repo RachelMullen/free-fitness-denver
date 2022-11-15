@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :organizations do
-  # nested resource for events and organizers
-    resources :events
-    resources :organizer
-  end
-
+  resources :organizations
   resources :organization_follows 
   resources :events 
   resources :event_follows 
-  resources :users 
+  resources :users
+
 
   # AUTHENTICATION/AUTHORIZATION ROUTES
   post "/signup", to: "users#create"
@@ -17,11 +13,14 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  #PROFILE
-  patch "/profile/:id", to: "users#update"
-  get "/profile/:id", to: "users#destroy"
+  # #PROFILE
+  # patch "/profile/:id", to: "users#update"
+  # get "/profile/:id", to: "users#destroy"
+  # get "profile", to: "users#show"
 
   get '*path',
       to: 'fallback#index',
       constraints: ->(req) { !req.xhr? && req.format.html? }
+      get '/', to: 'fallback#index'
+
 end

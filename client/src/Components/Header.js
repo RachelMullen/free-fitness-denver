@@ -1,17 +1,19 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import FreeFitnessDenver from "../assets/Free Fitness Denver.png";
 
 //TO DO: Fix spacing, change color if on active page or bold
 
-export default function Header({ updateUser, loggedIn, setLoggedIn }) {
+export default function Header({ setCurrentUser, loggedIn, setLoggedIn }) {
   let navigate = useNavigate();
 
   //Logs out current user
   function handleLogout() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        updateUser(null);
+        setCurrentUser(null);
         setLoggedIn(false);
+        alert("Logged out successfully.");
         navigate("/");
       }
     });
@@ -24,22 +26,19 @@ export default function Header({ updateUser, loggedIn, setLoggedIn }) {
           <div class="container flex flex-wrap justify-between items-center mx-auto">
             <Link to="/" class="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src={FreeFitnessDenver}
                 class="mr-3 h-6 sm:h-9"
-                alt="Flowbite Logo"
+                alt="Free Fitness Denver Logo"
               />
-              <span class="self-center text-xl font-semibold whitespace-nowrap text-gray-500 dark:text-white">
-                Free Fitness Denver
-              </span>
             </Link>
             <div class="flex md:order-2">
               <Link to="/" onClick={handleLogout}>
                 <button
                   type="button"
-                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="text-white shadow-md bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
                 >
                   Log Out
-                </button>{" "}
+                </button>
               </Link>
               <button
                 data-collapse-toggle="navbar-cta"
@@ -72,25 +71,25 @@ export default function Header({ updateUser, loggedIn, setLoggedIn }) {
                 <li>
                   <Link
                     to="/organizations"
-                    class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   >
-                    Organizations
+                    ORGANIZATIONS
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/events"
-                    class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   >
-                    Events
+                    EVENTS
                   </Link>
                 </li>
                 <li>
                   <Link
                     to="/profile"
-                    class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   >
-                    Profile
+                    PROFILE
                   </Link>
                 </li>
               </ul>
@@ -102,22 +101,19 @@ export default function Header({ updateUser, loggedIn, setLoggedIn }) {
           <div class="container flex flex-wrap justify-between items-center mx-auto">
             <Link to="/" class="flex items-center">
               <img
-                src="https://flowbite.com/docs/images/logo.svg"
+                src={FreeFitnessDenver}
                 class="mr-3 h-6 sm:h-9"
-                alt="Flowbite Logo"
+                alt="Free Fitness Denver Logo"
               />
-              <span class="self-center text-xl font-semibold whitespace-nowrap text-gray-500 dark:text-white">
-                Free Fitness Denver
-              </span>
             </Link>
             <div class="flex md:order-2">
               <Link to="/signup">
                 <button
                   type="button"
-                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  class="text-white shadow-md bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
                 >
-                  Sign Up
-                </button>{" "}
+                  SIGN UP
+                </button>
               </Link>
               <button
                 data-collapse-toggle="navbar-cta"
@@ -142,12 +138,12 @@ export default function Header({ updateUser, loggedIn, setLoggedIn }) {
                 </svg>
               </button>
             </div>
-                  <Link
-                    to="/login"
-                    class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                  >
-                    Login
-                  </Link>
+            <Link
+              to="/login"
+              class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+            >
+              LOGIN
+            </Link>
           </div>
         </nav>
       )}

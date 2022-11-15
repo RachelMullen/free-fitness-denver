@@ -1,5 +1,5 @@
 class EventFollowsController < ApplicationController
-
+    # skip_before_action :authorize
 
 private    
     def event_follows_params

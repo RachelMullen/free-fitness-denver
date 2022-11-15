@@ -10,36 +10,26 @@ import Login from "./Login";
 import Footer from "./Footer";
 import Profile from "../Pages/Profile";
 import OrganizationList from "./OrganizationList";
-import EventList from "./EventList";
+import EventPage from "./EventPage";
 import EventDetails from "./EventDetails";
 import OrganizationDetails from "./OrganizationDetails";
 import ProfileEdit from "./ProfileEdit";
 
 export default function App() {
-  const [user, setUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
-  const [errors, setErrors] = useState(false);
 
   //Grabs user information for authentication and authorization
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
         setLoggedIn(true);
-        r.json().then((user) => updateUser(user));
+        r.json().then((user) => setCurrentUser(user));
       }
-      // fetchEvents();
-      // fetchOrganizations();
-      //autologin
-      // } else {
-      //   setUser(null);
-      // }
     });
   }, [loggedIn]);
 
-  const deleteUser = (id) => setUser((user) => user.filter((p) => p.id !== id));
-  const updateUser = (user) => setUser(user);
-
-  if (errors) return <h1>{errors}</h1>;
+  // const deleteUser = (id) => setCurrentUser((current) => current.filter((p) => p.id !== id));
 
   return (
     <React.Fragment>
@@ -47,42 +37,78 @@ export default function App() {
         <Header
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
-          updateUser={updateUser}
+          setCurrentUser={setCurrentUser}
         />
-        <div>
+        <div class="flex justify-center">
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route
               path="/signup"
               element={
-                <SignUp updateUser={updateUser} setLoggedIn={setLoggedIn} />
+                <SignUp
+                  setCurrentUser={setCurrentUser}
+                  setLoggedIn={setLoggedIn}
+                />
               }
             />
             <Route
               path="login"
               element={
-                <Login updateUser={updateUser} setLoggedIn={setLoggedIn} />
+                <Login
+                  setCurrentUser={setCurrentUser}
+                  setLoggedIn={setLoggedIn}
+                />
               }
             />
             <Route
               path="/profile"
-              element={<Profile updateUser={updateUser} />}
+              element={<Profile currentUser={currentUser} />}
             />
-            <Route exact path="/organizations" element={<OrganizationList />} />
+            <Route
+              exact
+              path="/organizations"
+              element={
+                <OrganizationList
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              }
+            />
             <Route
               path="/organizations/:id"
-              element={<OrganizationDetails />}
+              element={
+                <OrganizationDetails
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              }
             />
-            <Route path="/events" element={<EventList />} />
-            <Route path="/events/:id" element={<EventDetails />} />
+            <Route
+              path="/events"
+              element={
+                <EventPage
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              }
+            />
+            <Route
+              path="/events/:id"
+              element={
+                <EventDetails
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              }
+            />
             <Route
               path="/profile/:id"
               element={
                 <ProfileEdit
-                  user={user}
-                  deleteUser={deleteUser}
-                  updateUser={updateUser}
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                  // deleteUser={deleteUser}
                 />
               }
             />
