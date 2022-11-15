@@ -1,37 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// import NewOrganizationForm from "../Components/NewOrganizationForm";
 
 //TO DO: Show:
 //List of followed organizations and events
 //List of events and organizations user owns
 // Ability to edit owned organizations
 // List of followed events and organizations
+//Fix refresh on render
+//Fix profile picture vs. attachment
 
 export default function Profile({ currentUser }) {
   const navigate = useNavigate();
+  const [hasProfilePicture, setHasProfilePicture] = useState(true);
+  // const [organizations, setOrganizations] = useState([]);
 
-  console.log(currentUser)
+  // useEffect(() => {
+  //   fetch("/organizations")
+  //     .then((res) => res.json())
+  //     .then((organizations) => {
+  //       setOrganizations(organizations);
+  //     });
+  // }, []);
+
   function handleProfileEdit() {
-    navigate(`/profile/${currentUser.id}/`)
+    navigate(`/profile/${currentUser.id}/`);
   }
 
+  // let organizationsArr = organizations.map((organization) => {
+  //   return (
+  //     <div>
+  //       {organization.currentUser.name}
+  //     </div>
+  //   )
+  // })
+
+  // console.log(organizationsArr)
   return (
     <>
       <div>
         <h1>Welcome {currentUser.name}!</h1>
-        <img
-          class="w-96 h-96 rounded-full"
-          alt="profile_picture"
-          src={currentUser.profile_picture}
-        />
+        <div>
+          {hasProfilePicture ? (
+            <div>
+              <img src={currentUser.profile_picture} alt={currentUser.name} />
+            </div>
+          ) : (
+            <div>
+              <img src={currentUser.attachment} alt={currentUser.name} />
+            </div>
+          )}
+        </div>
         <h2>{currentUser.email}</h2>
         <h2>{currentUser.bio}</h2>
-        <div> show User follows </div>
+        <div> show event follows </div>
         <div> show organization follows</div>
+
         <div>create new organization</div>
-        <div> Show owned organizations</div>
+        {/* <div>{organizationsArr}</div> */}
+
         <div>create new event</div>
         <div> show owned events </div>
+
         <button
           onClick={handleProfileEdit}
           type="button"

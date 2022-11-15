@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import OrganizationCard from "../Components/OrganizationCard";
+import OrganizationCard from "./OrganizationCard";
 
 //TO DO:
 
-export default function OrganizationList() {
+export default function OrganizationPage() {
   const [organizations, setOrganizations] = useState([]);
 
   useEffect(() => {

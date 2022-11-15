@@ -29,6 +29,6 @@ class OrganizationsController < ApplicationController
 
     private  
     def organization_params
-        params.permit(:name, :organizer_id, :announcements, :link, :social_media, :description, :attachment)
+        params.permit(:name, :organizer_id, :announcements, :link, :social_media, :description, :attachment, :organization_photo)
     end
 end

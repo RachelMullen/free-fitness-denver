@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 //TO DO: Won't update!
 
-export default function ProfileEdit({ currentUser, setCurrentUser, handleDelete }) {
+export default function ProfileEdit({ currentUser, setCurrentUser }) {
   const [profilePicture, setProfilePicture] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +22,7 @@ export default function ProfileEdit({ currentUser, setCurrentUser, handleDelete 
     formData.append("password", password);
     formData.append("password_confirmation", passwordConfirmation);
     formData.append("bio", bio);
-    formData.append("profile_picture", profilePicture); 
+    formData.append("profile_picture", profilePicture);
 
     fetch(`/users/${currentUser.id}`, {
       method: "PATCH",
@@ -41,14 +41,13 @@ export default function ProfileEdit({ currentUser, setCurrentUser, handleDelete 
   function handleDelete() {
     fetch(`/users/${currentUser.id}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    }).then((r) => {
-      if (r.ok) {
-        deleteUser(currentUser.id);
-            alert("User deleted.");
-        navigate("/");
-      }
-    });
+    })
+      .then((res) => res.json())
+      .then(
+        setCurrentUser(currentUser.filter((user) => user.id !== currentUser.id))
+      );
+    alert("User deleted.");
+    navigate("/");
   }
 
   return (
@@ -94,7 +93,7 @@ export default function ProfileEdit({ currentUser, setCurrentUser, handleDelete 
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               defaultValue={currentUser.email}
               onChange={(e) => setEmail(e.target.value)}
-              />
+            />
           </div>
           <div>
             <label
@@ -111,7 +110,7 @@ export default function ProfileEdit({ currentUser, setCurrentUser, handleDelete 
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               defaultValue={currentUser.password}
               onChange={(e) => setPassword(e.target.value)}
-              />
+            />
           </div>
           <div>
             <label
@@ -128,7 +127,7 @@ export default function ProfileEdit({ currentUser, setCurrentUser, handleDelete 
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               defaultValue={currentUser.passwordConfirmation}
               onChange={(e) => setPasswordConfirmation(e.target.value)}
-              />
+            />
           </div>
           <div>
             <label
@@ -144,7 +143,7 @@ export default function ProfileEdit({ currentUser, setCurrentUser, handleDelete 
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               defaultValue={currentUser.name}
               onChange={(e) => setName(e.target.value)}
-              />
+            />
           </div>
           <div>
             <label
@@ -161,7 +160,7 @@ export default function ProfileEdit({ currentUser, setCurrentUser, handleDelete 
               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
               defaultValue={currentUser.bio}
               onChange={(e) => setBio(e.target.value)}
-              />
+            />
           </div>
           <div>
             <label
@@ -186,9 +185,7 @@ export default function ProfileEdit({ currentUser, setCurrentUser, handleDelete 
             >
               UPDATE PROFILE
             </button>
-            {/* <button type="button" onClick={handleDelete}>
-              Delete User
-            </button> */}
+            <button onClick={handleDelete}>Delete User</button>
           </div>
         </form>
         {/* </div> */}

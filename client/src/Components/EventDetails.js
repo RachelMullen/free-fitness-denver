@@ -15,16 +15,14 @@ export default function EventDetail({ deleteEvent }) {
         r.json().then((event) => {
           setEvent(event);
         });
-      } 
+      }
     });
   }, []);
 
-
   return (
     <div class="flex justify-center flex-col flex-wrap items-center space-x-3 space-y-3 h-auto w-full">
-
       <div class="item w-3/4 h-32">
-      <h1>{event.name}</h1>
+        <h1>{event.name}</h1>
 
         <div>
           <p>{event.description}</p>

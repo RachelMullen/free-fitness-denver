@@ -4,55 +4,57 @@ import React, { useEffect, useState } from "react";
 //TO DO: Look at profile code for this and routing, show list of events beneath org card.
 // User can follow Organization
 
-export default function OrganizationDetails({
-  currentUser,
-  user,
-  onError,
-  onFollow,
-  isFollowing,
-}) {
+export default function OrganizationDetails({ currentUser }) {
   const [organization, setOrganization] = useState({ events: [] });
+  const [isFollowing, setIsFollowing] = useState(false);
 
   const { id } = useParams();
+
   useEffect(() => {
-    //GET to '/organizations/:id'
+    //Get details of specific organization to display on page
     fetch(`/organizations/${id}`).then((r) => {
       if (r.ok) {
         r.json().then((organization) => {
           setOrganization(organization);
         });
-      } 
+      }
     });
   }, []);
 
+  //Get details of specific organization to display on page
   function handleFollow(e) {
-    const following = currentUser
-      ? { organization_id: user.id, follower_id: currentUser.id }
-      : null;
+    const orgFollow = { organization_id: organization.id, follower_id: currentUser.id }
 
-    isFollowing
-      ? fetch(`/organization_follows/${user.id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }).then((r) => {
-          onFollow(false);
-        })
-      : fetch("/organization_follows", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(following),
-        }).then((r) => {
-          if (r.ok) {
-            r.json().then((data) => {
-              onFollow(true);
-            });
-          } 
-        });
+    fetch("/organization_follows", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orgFollow),
+    })
+    .then((r) => {
+     if (r.ok) {
+      r.json().then((orgFollow) => {
+        console.log(orgFollow);
+      })
+     } 
+    })
   }
+      //   if (r.ok) {
+      //     r.json().then((following) => {
+      //       setIsFollowing(true);
+      //     });
+      //   }
+      // }
+          // : fetch(`/organization_follows/${currentUser.id}`, {
+          //     method: "DELETE",
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //     },
+          //   }).then((r) => {
+          //     setIsFollowing(false);
+          //   })
+          //     }
 
 
   return (

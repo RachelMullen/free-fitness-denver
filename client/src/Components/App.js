@@ -9,7 +9,7 @@ import SignUp from "./SignUp";
 import Login from "./Login";
 import Footer from "./Footer";
 import Profile from "../Pages/Profile";
-import OrganizationList from "./OrganizationList";
+import OrganizationPage from "./OrganizationPage";
 import EventPage from "./EventPage";
 import EventDetails from "./EventDetails";
 import OrganizationDetails from "./OrganizationDetails";
@@ -69,7 +69,7 @@ export default function App() {
               exact
               path="/organizations"
               element={
-                <OrganizationList
+                <OrganizationPage
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
                 />
@@ -108,7 +108,6 @@ export default function App() {
                 <ProfileEdit
                   currentUser={currentUser}
                   setCurrentUser={setCurrentUser}
-                  // deleteUser={deleteUser}
                 />
               }
             />

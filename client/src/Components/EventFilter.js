@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function EventFilter({ category, onCategoryChange }) {
-    
   return (
     <div>
       <select

@@ -1,5 +1,6 @@
 class OrganizationFollowsController < ApplicationController
     # skip_before_action :authorize
+    # wrap_parameters format: []
     def create
         organization_follow = OrganizationFollow.create!(organization_follow_params)
         render json: organization_follow, status: :created

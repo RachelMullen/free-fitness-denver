@@ -20,8 +20,8 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
     formData.append("password", password);
     formData.append("password_confirmation", passwordConfirmation);
     formData.append("bio", bio);
-    formData.append("profile_picture", profilePicture); 
-    
+    formData.append("profile_picture", profilePicture);
+
     fetch("/signup", {
       method: "POST",
       body: formData,
@@ -30,7 +30,7 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
         r.json().then((formData) => setCurrentUser(formData));
         setLoggedIn(formData);
         navigate(`/profile`);
-      } 
+      }
     });
   }
 

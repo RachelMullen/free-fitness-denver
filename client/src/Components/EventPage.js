@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Search from "../Components/Search";
+import EventSearch from "./EventSearch";
 import EventCard from "../Components/EventCard";
 import EventFilter from "../Components/EventFilter";
 
@@ -21,7 +21,7 @@ export default function EventPage() {
     );
   }, []);
 
-  const displayedEvents = events.filter((event) => {
+  const searchedEvents = events.filter((event) => {
     return event.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
@@ -29,9 +29,8 @@ export default function EventPage() {
     setSelectedCategory(category);
   }
 
-  const eventsToDisplay = displayedEvents.filter((event) => {
+  const categoriesToDisplay = searchedEvents.filter((event) => {
     if (selectedCategory === "All") return true;
-
     return event.category === selectedCategory;
   });
 
@@ -42,13 +41,17 @@ export default function EventPage() {
           category={selectedCategory}
           onCategoryChange={handleCategoryChange}
         />
-        <Search searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+        <EventSearch searchTerm={searchTerm} onSearchChange={setSearchTerm}           category={selectedCategory}
+          onCategoryChange={handleCategoryChange}/>
       </div>
       <ul>
-        {eventsToDisplay.map((event) => (
+        {categoriesToDisplay.map((event) => (
           <EventCard key={event.id} event={event} />
         ))}
       </ul>
     </div>
   );
 }
+
+
+

@@ -6,7 +6,7 @@ class OrganizationSerializer < ActiveModel::Serializer
   has_many :events
   has_many :followers, :class_name => 'OrganizationFollow', :foreign_key => 'follower_id'
 
-  # def attachment
-  #   rails_blob_path(object.attachment, only_path: true) if object.attachment.attached?
-  # end
+  def organization_photo
+    rails_blob_path(object.organization_photo, only_path: true) if object.organization_photo.attached?
+  end
 end
