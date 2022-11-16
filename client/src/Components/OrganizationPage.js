@@ -22,5 +22,11 @@ export default function OrganizationPage() {
       );
     });
 
-  return <ul>{orgCollection}</ul>;
+  return (
+    <div class="flex flex-col flex-wrap items-center">
+      <div class="flex flex-wrap justify-center items-stretch  space-y-4 space-x-4 h-auto w-auto">
+        {orgCollection}
+      </div>
+    </div>
+  );
 }

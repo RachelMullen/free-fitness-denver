@@ -21,9 +21,11 @@ export default function OrganizationDetails({ currentUser }) {
     });
   }, []);
 
-  //Get details of specific organization to display on page
   function handleFollow(e) {
-    const orgFollow = { organization_id: organization.id, follower_id: currentUser.id }
+    const orgFollow = {
+      organization_id: organization.id,
+      follower_id: currentUser.id,
+    };
 
     fetch("/organization_follows", {
       method: "POST",
@@ -31,43 +33,44 @@ export default function OrganizationDetails({ currentUser }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(orgFollow),
-    })
-    .then((r) => {
-     if (r.ok) {
-      r.json().then((orgFollow) => {
-        console.log(orgFollow);
-      })
-     } 
-    })
-  }
-      //   if (r.ok) {
-      //     r.json().then((following) => {
-      //       setIsFollowing(true);
-      //     });
-      //   }
-      // }
-          // : fetch(`/organization_follows/${currentUser.id}`, {
-          //     method: "DELETE",
-          //     headers: {
-          //       "Content-Type": "application/json",
-          //     },
-          //   }).then((r) => {
-          //     setIsFollowing(false);
-          //   })
-          //     }
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((orgFollow) => {
+          console.log(orgFollow);
+          setIsFollowing(true);
+        });
+      }
+    });
 
+    fetch(`/organization_follows/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(),
+    });
+  }
+  // }).then((orgFollow) => {
+  //   // console.log(orgFollow);
+  //   setIsFollowing(false);
+  // });
 
   return (
     <div class="flex flex-wrap -mx-2 overflow-hidden">
       <div class="my-2 px-2 w-1/3 overflow-hidden">
         <div class="max-w-sm">
+          <h1>{organization.name}</h1>
+
           <img
             src={organization.attachment}
             alt={organization.name}
             class="rounded-t-lg"
           />
-
-          <h1>{organization.name}</h1>
+          <p>
+            <button onClick={handleFollow} className="button">
+              {isFollowing ? "Unfollow" : "Follow"}
+            </button>
+          </p>
           <div className="wrapper">
             <div>
               <p>{organization.description}</p>
@@ -109,9 +112,6 @@ export default function OrganizationDetails({ currentUser }) {
               alt={organization.name}
             />
           </div>
-          <button onClick={handleFollow} className="button">
-            {isFollowing ? "Unfollow" : "Follow"}
-          </button>
         </div>
       </div>
     </div>

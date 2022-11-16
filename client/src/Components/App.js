@@ -39,82 +39,80 @@ export default function App() {
           setLoggedIn={setLoggedIn}
           setCurrentUser={setCurrentUser}
         />
-        <div class="flex justify-center">
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route
-              path="/signup"
-              element={
-                <SignUp
-                  setCurrentUser={setCurrentUser}
-                  setLoggedIn={setLoggedIn}
-                />
-              }
-            />
-            <Route
-              path="login"
-              element={
-                <Login
-                  setCurrentUser={setCurrentUser}
-                  setLoggedIn={setLoggedIn}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={<Profile currentUser={currentUser} />}
-            />
-            <Route
-              exact
-              path="/organizations"
-              element={
-                <OrganizationPage
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                />
-              }
-            />
-            <Route
-              path="/organizations/:id"
-              element={
-                <OrganizationDetails
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                />
-              }
-            />
-            <Route
-              path="/events"
-              element={
-                <EventPage
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                />
-              }
-            />
-            <Route
-              path="/events/:id"
-              element={
-                <EventDetails
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                />
-              }
-            />
-            <Route
-              path="/profile/:id"
-              element={
-                <ProfileEdit
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
-                />
-              }
-            />
-            <Route path="/error" element={<Error />} />
-            <Route path="/logout" element={<Login />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route
+            path="/signup"
+            element={
+              <SignUp
+                setCurrentUser={setCurrentUser}
+                setLoggedIn={setLoggedIn}
+              />
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <Login
+                setCurrentUser={setCurrentUser}
+                setLoggedIn={setLoggedIn}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={<Profile currentUser={currentUser} />}
+          />
+          <Route
+            exact
+            path="/organizations"
+            element={
+              <OrganizationPage
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+          <Route
+            path="/organizations/:id"
+            element={
+              <OrganizationDetails
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+          <Route
+            path="/events"
+            element={
+              <EventPage
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+          <Route
+            path="/events/:id"
+            element={
+              <EventDetails
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+          <Route
+            path="/profile/:id"
+            element={
+              <ProfileEdit
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+          <Route path="/error" element={<Error />} />
+          <Route path="/logout" element={<Login />} />
+        </Routes>
         <Footer />
       </Router>
     </React.Fragment>

@@ -41,8 +41,12 @@ export default function EventPage() {
           category={selectedCategory}
           onCategoryChange={handleCategoryChange}
         />
-        <EventSearch searchTerm={searchTerm} onSearchChange={setSearchTerm}           category={selectedCategory}
-          onCategoryChange={handleCategoryChange}/>
+        <EventSearch
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+          category={selectedCategory}
+          onCategoryChange={handleCategoryChange}
+        />
       </div>
       <ul>
         {categoriesToDisplay.map((event) => (
@@ -52,6 +56,3 @@ export default function EventPage() {
     </div>
   );
 }
-
-
-

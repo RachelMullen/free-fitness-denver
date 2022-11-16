@@ -5,6 +5,12 @@ class OrganizationsController < ApplicationController
         render json: Organization.all.order(:name), status: :ok
     end
 
+    #Show user Organizations
+    def user_organizations
+        organizations = @current_user.organizations 
+        render json: organizations, include: :user
+    end
+
     def show
         organization = Organization.find(params[:id])
         render json: organization, include: :events, status: :ok

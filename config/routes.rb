@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  # get "/profile/:id", to: "users#user_organizations"
+
+  # post '/organization/:user_id', to: 'follows#create'
+  # delete '/follow/:user_id', to: 'follows#destroy'
+
   # #PROFILE
   # patch "/profile/:id", to: "users#update"
   # get "/profile/:id", to: "users#destroy"

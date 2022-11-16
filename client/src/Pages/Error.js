@@ -4,7 +4,9 @@ export default function Error() {
 
   return (
     <>
-      <h1>Sorry! We can't find the page you're looking for!</h1>
+      <h1 class="text-teal-400">
+        Sorry! We can't find what you're looking for!
+      </h1>
       <h1>404 Not Found</h1>
     </>
   );

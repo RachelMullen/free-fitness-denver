@@ -1,14 +1,13 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-
 export default function Footer() {
   return (
-    <footer class="p-4 bg-purple-700 md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
-      <span class="text-sm text-white sm:text-center dark:text-w">
+    <footer class="p-3 my-7 bg-purple-700 md:flex md:items-center md:justify-between md:p-6">
+      <span class="text-lg text-white sm:text-center">
         © 2022 Rachel Mullen. All Rights Reserved.
       </span>
-      <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
+      <ul class="flex flex-wrap items-center mt-3 text-lg text-white sm:mt-0">
         <li>
           <Link to="/about" class="mr-4 hover:underline md:mr-6">
             About Free Fitness Denver

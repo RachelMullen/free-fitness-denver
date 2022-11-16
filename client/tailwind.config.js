@@ -37,7 +37,11 @@ module.exports = {
       center: true,
       padding: "2rem",
     },
+
+
   },
-  extend: {},
-  plugins: [require("flowbite/plugin"), require("flowbite-typography")],
+  extend: {
+
+  },
+  plugins: [require("flowbite/plugin")],
 };
