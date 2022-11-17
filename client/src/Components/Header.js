@@ -2,8 +2,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FreeFitnessDenver from "../assets/Free Fitness Denver.png";
 
-//TO DO: Fix spacing, change color if on active page or bold
-
 export default function Header({ setCurrentUser, loggedIn, setLoggedIn }) {
   let navigate = useNavigate();
 
@@ -39,7 +37,7 @@ export default function Header({ setCurrentUser, loggedIn, setLoggedIn }) {
                   to="/organizations"
                   class="font-medium block py-2 pr-6 pl-5 text-gray-700 text-xl focus:text-purple-700 md:hover:text-purple-700 md:p-0"
                 >
-                  ORGANIZATIONS
+                  GROUPS
                 </Link>
               </div>
               <div>

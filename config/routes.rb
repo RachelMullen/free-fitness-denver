@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
   resources :organizations
-  resources :organization_follows 
+  resources :organization_follows, only: [:create, :destroy]
   resources :events 
   resources :event_follows 
   resources :users
-
 
   # AUTHENTICATION/AUTHORIZATION ROUTES
   post "/signup", to: "users#create"
@@ -13,15 +12,17 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  get '/organization_follows/:follower_id', to: "organization_follows#get_followed_organizations"
+
   # get "/profile/:id", to: "users#user_organizations"
 
   # post '/organization/:user_id', to: 'follows#create'
   # delete '/follow/:user_id', to: 'follows#destroy'
 
-  # #PROFILE
-  # patch "/profile/:id", to: "users#update"
-  # get "/profile/:id", to: "users#destroy"
-  # get "profile", to: "users#show"
+  #PROFILE
+  patch "/profile/:id", to: "users#update"
+  get "/profile/:id", to: "users#destroy"
+  get "profile", to: "users#show"
 
   get '*path',
       to: 'fallback#index',

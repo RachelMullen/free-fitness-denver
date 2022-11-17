@@ -1,35 +1,50 @@
 // import { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-// import EventCard from "./Components/EventCard";
-
-//TO DO:
 
 export default function OrganizationCard({ organization }) {
   const { name, attachment, id, events } = organization;
 
   return (
-    <div class="self-stretch">
-      <Link
-        to={`/organizations/${id}`}
-        class="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-      >
-        <div>
-          <div class="p-5">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+    <div class="w-1/4 content-center  text-center object-center items-center">
+      <div class="text-center object-center items-center content-center">
+        <Link
+          to={`/organizations/${id}`}
+          class="block max-w-sm bg-white rounded-lg border border-gray-200 shadow-xl-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+        >
+          <div class="">
+            {" "}
+            <img
+              src={attachment}
+              alt={name}
+              class="rounded-t-lg max-w-full place-self-center self-center content-center"
+            />
+            <h5 class="mb-4 p-1.5 text-2xl font-bold tracking-tight bg-teal-400 text-white">
               {name}
             </h5>
-            <img src={attachment} alt={name} class="rounded-t-lg max-w-full" />
-
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
               {[events.name]}
             </p>
-            {/* <a href="#" class="inline-flex items-center py-2 px-3 text-lg font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"> */}
-            {/* Read more
-          <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> */}
-            {/* </a> */}
+            <div class="inline-flex items-center font-medium text-purple-600 dark:text-purple-500 text-lg">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                ></path>
+              </svg>
+              <h2 class="py-4 text-xl px-2 ">LEARN MORE </h2>
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }

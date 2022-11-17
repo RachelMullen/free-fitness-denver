@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-//TO DO:
-
 export default function Login({ setCurrentUser, setLoggedIn }) {
   const [formData, setFormData] = useState({
     email: "",
@@ -39,7 +37,6 @@ export default function Login({ setCurrentUser, setLoggedIn }) {
   return (
     <div class="flex flex-col flex-wrap justify-evenly items-center ">
       <div class="relative w-full max-w-md h-full md:h-auto ">
-        {/* <!-- Modal content --> */}
         <div class="relative bg-purple-600 rounded-lg shadow-md dark:bg-gray-700">
           <div class="py-6 px-6 lg:px-8">
             <h1 class=" text-center mb-4 text-3xl font-medium   dark:text-white">
@@ -49,7 +46,7 @@ export default function Login({ setCurrentUser, setLoggedIn }) {
               <div>
                 <label
                   for="email"
-                  class="block mb-2 text-lg font-medium text-gray-300 dark:text-gray-300"
+                  class="block mb-2 text-lg font-medium text-gray-100 dark:text-gray-300"
                 >
                   Your email
                 </label>
@@ -59,7 +56,7 @@ export default function Login({ setCurrentUser, setLoggedIn }) {
                   id="email"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                   placeholder="email@email.com"
-                  required=""
+                  required
                   value={email}
                   onChange={handleChange}
                 />
@@ -67,7 +64,7 @@ export default function Login({ setCurrentUser, setLoggedIn }) {
               <div>
                 <label
                   for="password"
-                  class="block mb-2 text-lg font-medium text-gray-300 dark:text-gray-300"
+                  class="block mb-2 text-lg font-medium text-gray-100 dark:text-gray-300"
                 >
                   Your password
                 </label>
@@ -77,18 +74,18 @@ export default function Login({ setCurrentUser, setLoggedIn }) {
                   id="password"
                   placeholder="••••••••"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                  required=""
+                  required
                   value={password}
                   onChange={handleChange}
                 />
               </div>
               <button
                 type="submit"
-                class="w-full shadow-md text-white bg-teal-400 hover:bg-teal-500 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
+                class="w-full shadow-xl text-white bg-teal-400 hover:bg-teal-500 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
               >
                 LOGIN
               </button>
-              <div class="text-lg font-lg text-gray-300 dark:text-gray-300 text-center">
+              <div class="text-lg font-lg text-gray-100 dark:text-gray-300 text-center">
                 <p class="italic">New User?</p>
                 <p>
                   <Link

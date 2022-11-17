@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-        # skip_before_action :authorize
+        skip_before_action :authorize
 
     def index
         render json: Event.all.order(:name), status: :ok

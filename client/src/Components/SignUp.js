@@ -55,7 +55,7 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
                   id="email"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                   placeholder="email@email.com"
-                  required=""
+                  required
                   defaultValue={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -73,7 +73,7 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
                   id="password"
                   placeholder="••••••••"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                  required=""
+                  required
                   defaultValue={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -91,7 +91,7 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
                   id="password"
                   placeholder="••••••••"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                  required=""
+                  required
                   defaultValue={passwordConfirmation}
                   onChange={(e) => setPasswordConfirmation(e.target.value)}
                 />
@@ -109,7 +109,7 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
                   id="name"
                   placeholder="First and Last"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                  required=""
+                  required
                   defaultValue={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -128,7 +128,7 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
                   placeholder="Share some fun details about yourself!"
                   rows="4"
                   class="block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-purple-500 focus:border-purple-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-                  required=""
+                  required
                   defaultValue={bio}
                   onChange={(e) => setBio(e.target.value)}
                 />
@@ -148,17 +148,17 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
                   placeholder="Upload photo"
                   accept="image/*"
                   class="block w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                  required=""
+                  required
                   onChange={(e) => setProfilePicture(e.target.files[0])}
                 />
               </div>
               <button
                 type="submit"
-                class="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
+                class="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 shadow-xl focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
               >
                 SIGN UP
               </button>
-              <div class="text-lg font-lg text-gray-500 dark:text-gray-300 text-center">
+              <div class="text-lg font-lg text-gray-900dark:text-gray-300 text-center">
                 <p class="italic">Already have an account?</p>
                 <p>
                   <Link

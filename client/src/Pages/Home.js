@@ -18,18 +18,18 @@ export default function Home() {
       </h1>
       <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
         From workout groups, to bike rides, hikes, to pub runs, free fitness is
-        everywhere, especially in Denver.{" "}
+        everywhere, especially in Denver.
       </p>
       <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-        {" "}
-        View and save your favorite opportunities and get moving with Free Fitness Denver!
+        View and save your favorite opportunities and get moving with Free
+        Fitness Denver!
       </p>
       <p>
         <Link
           to="/signup"
           class="m-3 inline-flex justify-center items-center py-3 px-5 text-lg font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-900"
         >
-          SIGN UP{" "}
+          SIGN UP
           <svg
             class="ml-2 -mr-1 w-5 h-5"
             fill="currentColor"
@@ -49,7 +49,7 @@ export default function Home() {
         <p>
           <Link
             to="/login"
-            class="inline-flex items-center font-medium text-purple-600 dark:text-purple-500 hover:underline text-lg"
+            class="inline-flex flex-wrap items-center font-medium text-purple-600 dark:text-purple-500 hover:underline text-lg"
           >
             Login
             <svg

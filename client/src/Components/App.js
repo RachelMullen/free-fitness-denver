@@ -16,11 +16,14 @@ import OrganizationDetails from "./OrganizationDetails";
 import ProfileEdit from "./ProfileEdit";
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(false); //or false?
   const [loggedIn, setLoggedIn] = useState(false);
+  const [organizations, setOrganizations] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   //Grabs user information for authentication and authorization
   useEffect(() => {
+    setIsLoading(true);
     fetch("/me").then((r) => {
       if (r.ok) {
         setLoggedIn(true);
@@ -28,6 +31,14 @@ export default function App() {
       }
     });
   }, [loggedIn]);
+
+  useEffect(() => {
+    fetch("/organizations")
+      .then((r) => r.json())
+      .then((organizations) => {
+        setOrganizations(organizations);
+      });
+  }, []);
 
   // const deleteUser = (id) => setCurrentUser((current) => current.filter((p) => p.id !== id));
 
@@ -107,6 +118,7 @@ export default function App() {
               <ProfileEdit
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
+                organizations={organizations}
               />
             }
           />
