@@ -16,6 +16,7 @@ export default function Header({ setCurrentUser, loggedIn, setLoggedIn }) {
       }
     });
   }
+  
   //renders custom navigation
   return (
     <header>

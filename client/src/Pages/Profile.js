@@ -9,34 +9,36 @@ import { Link } from "react-router-dom";
 //Fix refresh on render
 
 export default function Profile({ currentUser }) {
-
   // console.log(currentUser.events);
   // console.log(currentUser.organizations);
 
   console.log(currentUser);
 
   //is this what is causing refresh?
-  // function hasAttachment() {
-  //   const profile_picture = currentUser.profile_picture;
-  //   const attachment = currentUser.attachment;
-  //   if (attachment === null) {
-  //     return (
-  //       <img
-  //         class="max-h-96 rounded-lg shadow-lg"
-  //         src={profile_picture}
-  //         alt={currentUser.name}
-  //       />
-  //     );
-  //   } else {
-  //     return (
-  //       <img
-  //         class="max-h-96 rounded-lg shadow-lg"
-  //         src={attachment}
-  //         alt={currentUser.name}
-  //       />
-  //     );
-  //   }
-  // }
+  function hasAttachment() {
+    const profile_picture = currentUser.profile_picture;
+    const attachment = currentUser.attachment;
+    if (attachment === null) {
+      return (
+        <img
+          class="max-h-96 rounded-lg shadow-lg"
+          src={profile_picture}
+          alt={currentUser.name}
+        />
+      );
+    } else {
+      return (
+        <img
+          class="max-h-96 rounded-lg shadow-lg"
+          src={attachment}
+          alt={currentUser.name}
+        />
+      );
+    }
+  }
+  if (!currentUser) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div class="flex flex-col flex-wrap items-center space-y-2 h-auto w-auto">
@@ -48,6 +50,7 @@ export default function Profile({ currentUser }) {
           src={currentUser.profile_picture}
           alt={currentUser.name}
         /> */}
+          {hasAttachment()}
           <div class="text-center">
             <h2 class="m-5">{currentUser.bio}</h2>
             <Link

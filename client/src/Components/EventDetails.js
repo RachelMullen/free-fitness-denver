@@ -42,7 +42,7 @@ export default function EventDetail({ currentUser, deleteEvent }) {
                 class="w-full object-center items-center content-center self-center text-xl text-center text-white font-bold p-2 bg-purple-700 hover:bg-purple-800"
                 onClick={handleFollow}
               >
-                {isFollowing ? "UNFOLLOW" : "FOLLOW"}
+                {isFollowing ? "FOLLOWING" : "FOLLOW"}
               </button>
             </p> */}
             <div className="">
@@ -54,7 +54,7 @@ export default function EventDetail({ currentUser, deleteEvent }) {
                 </p>
                 <br />
                 <p>
-                  {event.location_name} </p><p>{event.address}, {event.city},{" "}
+                  {event.location_name} </p><p>{event.address} | {event.city},{" "}
                   {event.state} {event.zip}
                 </p>
                 <br />
@@ -96,7 +96,7 @@ export default function EventDetail({ currentUser, deleteEvent }) {
                       </h3>{" "}
                       <div class="flex mt-5 flex-col flex-wrap items-right space-y-1 h-auto w-auto">
                         <Link
-                          to={`/organizations/${id}/`}
+                          to={`/organizations/${event.organization.id}/`}
                           class="inline-flex items-center font-medium text-white  hover:underline"
                         >
                           {event.organization.name}

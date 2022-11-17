@@ -67,14 +67,14 @@ export default function OrganizationDetails({ currentUser }) {
           <img
             src={organization.attachment}
             alt={organization.name}
-            class="rounded-t-lg py-5"
+            class="rounded-t-lg py-5 self-center content-center object-center"
           />
           <p class="object-center items-center content-centerself-center text-center">
             <button
               class="w-full object-center items-center content-center self-center text-xl text-center text-white font-bold p-2 bg-teal-400 hover:bg-teal-500"
               onClick={handleFollow}
             >
-              {isFollowing ? "UNFOLLOW" : "FOLLOW"}
+              {isFollowing ? "FOLLOWING" : "FOLLOW"}
             </button>
           </p>
           <div className="">
@@ -118,7 +118,7 @@ export default function OrganizationDetails({ currentUser }) {
                     <div class="flex mt-5 flex-col flex-wrap items-right space-y-1 h-auto w-auto">
                       {organization.events.map((event) => (
                         <Link
-                          to={`/events/${id}/`}
+                          to={`/events/${event.id}/`}
                           class="inline-flex items-center font-medium text-white  hover:underline"
                         >
                           {event.name}

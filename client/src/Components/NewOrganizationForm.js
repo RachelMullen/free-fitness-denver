@@ -1,20 +1,22 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function NewOrganizationForm() {
+export default function NewOrganizationForm({ currentUser }) {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    title: "",
-    year: new Date().getFullYear(),
-    length: "0",
-    director: "",
+    name: "",
+    organizer_id: currentUser.id,
     description: "",
-    poster_url: "",
-    category: "",
-    discount: false,
-    female_director: false,
+    attachment: "",
+    announcements: "",
+    link: "",
+    social_media: "",
   });
 
   function handleSubmit(e) {
     e.preventDefault();
+
     fetch("/organizations", {
       method: "POST",
       headers: {
@@ -23,136 +25,119 @@ function NewOrganizationForm() {
       body: JSON.stringify(formData),
     })
       .then((r) => r.json())
-      .then((data) => {
-        console.log(data);
-      });
+      .then((formData) => console.log(formData));
+    setFormData({
+      name: "",
+      description: "",
+      attachment: "",
+      announcements: "",
+      organizer_id: currentUser.id,
+      link: "",
+      social_media: "",
+    });
+    navigate("/organizations");
   }
 
   function handleChange(e) {
-    const value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
-    setFormData({
-      ...formData,
-      [e.target.id]: value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
   }
 
   return (
-    <Wrapper>
-      <form onSubmit={handleSubmit}>
-        <FormGroup>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            value={formData.title}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="year">Year</label>
-          <input
-            type="number"
-            id="year"
-            min="1888"
-            max={new Date().getFullYear()}
-            value={formData.year}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="length">Length</label>
-          <input
-            type="number"
-            id="length"
-            value={formData.length}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="director">Director</label>
-          <input
-            type="text"
-            id="director"
-            value={formData.director}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="poster_url">Poster</label>
-          <input
-            type="text"
-            id="poster_url"
-            value={formData.poster_url}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="category">Category</label>
-          <input
-            type="text"
-            id="category"
-            value={formData.category}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="discount">
-            Discount?
-            <input
-              type="checkbox"
-              id="discount"
-              checked={formData.discount}
-              onChange={handleChange}
-            />
-          </label>
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="female_director">
-            Female Director?
-            <input
-              type="checkbox"
-              id="female_director"
-              checked={formData.female_director}
-              onChange={handleChange}
-            />
-          </label>
-        </FormGroup>
-        <SubmitButton type="submit">Add Movie</SubmitButton>
-      </form>
-    </Wrapper>
+    <div class="flex flex-col flex-wrap justify-evenly items-center space-y-3 ">
+      {" "}
+      <div class="flex w-full max-w-md h-full md:h-auto">
+        <div class="rounded-lg shadow-lg bg-teal-300 dark:bg-gray-700">
+          <div class="flex py-6 lg:px-8 ">
+            <form onSubmit={handleSubmit} class="space-y-6">
+              <div>
+                <h1 class=" text-center mb-4 text-3xl font-medium text-gray-900 dark:text-white">
+                  CREATE A NEW ORGANIZATION
+                </h1>
+                <label
+                  htmlFor="name"
+                  class="block mb-2 text-lg font-medium text-gray-900 dark:text-gray-300"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  value={formData.name}
+                  onChange={handleChange}
+                />{" "}
+              </div>
+              <div>
+                <label htmlFor="description">Description</label>
+                <input
+                  type="text"
+                  name="description"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                  id="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                />{" "}
+              </div>
+              <div>
+                <label htmlFor="attachment">
+                  Attachment{" "}
+                  <input
+                    type="text"
+                    name="attachment"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                    id="attachment"
+                    value={formData.attachment}
+                    onChange={handleChange}
+                  />{" "}
+                </label>{" "}
+              </div>
+              <div>
+                <label htmlFor="announcements">
+                  Announcements
+                  <input
+                    type="text"
+                    name="announcements"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                    id="announcements"
+                    value={formData.announcements}
+                    onChange={handleChange}
+                  />{" "}
+                </label>
+              </div>
+              <div>
+                <label htmlFor="link">
+                  Website Link{" "}
+                  <input
+                    type="text"
+                    name="link"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                    id="link"
+                    value={formData.link}
+                    onChange={handleChange}
+                  />
+                </label>{" "}
+              </div>
+              <div>
+                <label htmlFor="social_media">
+                  Social Media Link
+                  <input
+                    type="text"
+                    name="social_media"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                    id="social_media"
+                    value={formData.social_media}
+                    onChange={handleChange}
+                  />
+                </label>{" "}
+              </div>
+
+              <button type="submit" class=" text-purple-600 ">ADD ORGANIZATION</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
-
-const Wrapper = styled.section`
-  max-width: 500px;
-  margin: 32px auto;
-  padding: 32px;
-`;
-
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
-`;
-
-const SubmitButton = styled.button`
-  background: blue;
-  color: yellow;
-  font-weight: bold;
-  font-family: inherit;
-  font-size: 1.2rem;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-`;
-
-export default MovieForm;

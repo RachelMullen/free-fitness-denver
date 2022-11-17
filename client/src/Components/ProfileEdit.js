@@ -119,8 +119,8 @@ export default function ProfileEdit({ currentUser, setCurrentUser }) {
               </label>
               <input
                 type="password"
-                name="password"
-                id="password"
+                name="password_confirmation"
+                id="password_confirmation"
                 placeholder="••••••••"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 defaultValue={currentUser.passwordConfirmation}

@@ -76,7 +76,7 @@ organization4 = Organization.create!(
   name: "Highland Tap & Burger",
   organizer_id: user4.id,
   description: "Meet up with fellow fitness enthusiasts for the Highland Tap & Burger Run Club, and run a pre-planned 5k- or 10k-loop around the historic neighborhoods of Lower Downtown and the Highlands. All runners get free pasta and salad, as well as 20 percent off select beers. Highland Tap & Burger features dozens of Colorado craft beers on tap and in bottles. Throughout the year, we'll have different giveaways and information updates from local races and running groups. A huge THANK YOU to our generous sponsors!", 
-  attachment: "https://scontent.fapa1-1.fna.fbcdn.net/v/t39.30808-6/313112867_2148525685318262_7807521815158219272_n.jpg?stp=dst-jpg_p180x540&_nc_cat=111&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=_rpkPj9YQhIAX_EQvS1&_nc_ht=scontent.fapa1-1.fna&oh=00_AfA7cPWVCPT3Dc38C48Xee-gqlwMTjosNCjrkvvDXz0bVg&oe=636D5AF1",
+  attachment: "https://tapandburger.com/wp-content/uploads/2019/01/logo-dark.png",
   announcements: "Runners can choose a 10K or 5K distance.",
   link: "http://www.denverrunclub.com/",
   social_media: "https://www.facebook.com/groups/HTBrunclub/")
@@ -124,7 +124,7 @@ organization9 = Organization.create!(
   organizer_id: user1.id,
   description: "This is a group for anyone interested in balancing fitness with the enjoyment of craft beer in Denver. Every Wednesday night a group of runners with varying experience meets at a local brewery or craft beer bar and runs between 3-5 miles returning for post-run beer.
   Running routes are determined several days in advance and are posted in each meetup. We look forward to running and enjoying some beer with you!", 
-  attachment: "https://scontent.fapa1-2.fna.fbcdn.net/v/t1.6435-9/96510368_10106914227574481_5813035289341329408_n.jpg?stp=dst-jpg_s960x960&_nc_cat=109&ccb=1-7&_nc_sid=8631f5&_nc_ohc=4NQ0C8tojAcAX_jR2yf&_nc_ht=scontent.fapa1-2.fna&oh=00_AfDFkxhydeRTqEZZuCzx8UU0Z5LnNY_GUOdUNhtcGF-w5A&oe=63908C9F",
+  attachment: "http://drive.google.com/uc?id=1oxbEhcx9luo7mVGHrVkWiAxYovWICiQo",
   announcements: "Check event socials for more information.",
   link: "https://www.facebook.com/groups/denverbeerrunners",
   social_media: "https://www.instagram.com/denverbeerrunners/")
@@ -137,7 +137,7 @@ event1 = Event.create!(
   organization_id: organization1.id,
   name: "Team Park Hill: Back on my Feet",
   description: "Back on My Feet seeks to revolutionize the way society approaches homelessness. Our unique model demonstrates that if you first restore confidence, strength and self-esteem, individuals are better equipped to tackle the road ahead. For all in need, we aim to provide: practical training and employment resources for achieving independence; an environment that promotes accountability; and a community that offers compassion and hope.", 
-  attachment: "https://dpgzjp4u334u3.cloudfront.net/wp-content/uploads/37551962_1324902607641716_9143257204428636160_o-2000x1200.jpg",
+  attachment: "https://backonmyfeet.org/wp-content/uploads/2021/08/cropped-BoMF-Lockup-Logo-DkBlue-01.png",
   location_name: "Denver Rescue Mission",
   address: "6090 Smith Rd",
   city: "Denver",
@@ -215,7 +215,7 @@ event5 = Event.create!(
   We start promptly at 6:30pm, so plan enough time to find parking and sign the waiver (for first timers only).
   
   This is a year-round run club, so come prepared with warm layers, reflective gear and/or headlamps on fall and winter evenings", 
-  attachment: "https://scontent.fapa1-1.fna.fbcdn.net/v/t31.18172-8/20045543_10100339736247718_8450743288982198197_o.jpg?stp=dst-jpg_s960x960&_nc_cat=103&ccb=1-7&_nc_sid=8631f5&_nc_ohc=J2HjfANXZ5sAX8SgJMN&_nc_ht=scontent.fapa1-1.fna&oh=00_AfC7xD7OE82DC31jOsflOJ--pjU7_yNepiL2XsDl2P6ssQ&oe=639079DE",
+  attachment: "http://drive.google.com/uc?id=1ESAUIKonMxINUmCjwN6fy9MwDYt3ZjmK",
   location_name: "Denver Beer Co - Platte St",
   address: "1695 Platte St",
   city: "Denver",
@@ -239,7 +239,7 @@ event6 = Event.create!(
   We start promptly at 6:30pm, so plan enough time to find parking and sign the waiver (for first timers only).
   
   This is a year-round run club, so come prepared with warm layers, reflective gear and/or headlamps on fall and winter evenings", 
-  attachment: "https://scontent.fapa1-1.fna.fbcdn.net/v/t31.18172-8/20045543_10100339736247718_8450743288982198197_o.jpg?stp=dst-jpg_s960x960&_nc_cat=103&ccb=1-7&_nc_sid=8631f5&_nc_ohc=J2HjfANXZ5sAX8SgJMN&_nc_ht=scontent.fapa1-1.fna&oh=00_AfC7xD7OE82DC31jOsflOJ--pjU7_yNepiL2XsDl2P6ssQ&oe=639079DE",
+  attachment: "http://drive.google.com/uc?id=1ESAUIKonMxINUmCjwN6fy9MwDYt3ZjmK",
   location_name: "Denver Beer Co - Old Town Arvada",
   address: "5768 Olde Wadsworth Blvd",
   city: "Arvada",
@@ -263,7 +263,7 @@ event7 = Event.create!(
   We start promptly at 6:30pm, so plan enough time to find parking and sign the waiver (for first timers only).
   
   This is a year-round run club, so come prepared with warm layers, reflective gear and/or headlamps on fall and winter evenings", 
-  attachment: "https://scontent.fapa1-1.fna.fbcdn.net/v/t31.18172-8/20045543_10100339736247718_8450743288982198197_o.jpg?stp=dst-jpg_s960x960&_nc_cat=103&ccb=1-7&_nc_sid=8631f5&_nc_ohc=J2HjfANXZ5sAX8SgJMN&_nc_ht=scontent.fapa1-1.fna&oh=00_AfC7xD7OE82DC31jOsflOJ--pjU7_yNepiL2XsDl2P6ssQ&oe=639079DE",
+  attachment: "http://drive.google.com/uc?id=1ESAUIKonMxINUmCjwN6fy9MwDYt3ZjmK",
   location_name: "Denver Beer Co - Old Town Arvada",
   address: "2425 S Downing St",
   city: "Denver",
@@ -284,7 +284,7 @@ event8 = Event.create!(
   10K @ 6:15, 5k @ 6:30
   FREE dinner after.
   Throughout the year, we'll have different giveaways and information updates from local races and running groups. A huge THANK YOU to our generous sponsors!", 
-  attachment: "https://scontent.fapa1-1.fna.fbcdn.net/v/t1.6435-9/80424848_1335804989923673_3897436461795901440_n.jpg?stp=dst-jpg_s960x960&_nc_cat=111&ccb=1-7&_nc_sid=8631f5&_nc_ohc=rGVunlE66w4AX-MYEvz&_nc_ht=scontent.fapa1-1.fna&oh=00_AfBUUARU1caLvEvKroMfqnzawO8tAGXibxjCMgdY924ltg&oe=63908EAB",
+  attachment: "http://drive.google.com/uc?id=1MdKcoU3E-q6CahwBJPtQ0O8FYDBc_RhH",
   location_name: "Highland Tap & Burger",
   address: "2219 W 32nd Ave",
   city: "Denver",
@@ -311,7 +311,7 @@ event9 = Event.create!(
   5. Finish back at the Blackbird
   6. Drink $5 featured Colorado craft beer with runner hand stamp!
   7. 15 runs gets you a free RUN THE BIRD t-shirt!", 
-  attachment: "https://scontent.fapa1-1.fna.fbcdn.net/v/t39.30808-6/311568120_421493813516069_7920568116163041280_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=7k9o-yLPEVwAX8ZJQUQ&_nc_ht=scontent.fapa1-1.fna&oh=00_AfAw8yyuprQryt32aS8W0lyqJV8HcNh5Wm3_5gekTy2uPA&oe=636EFFBE",
+  attachment: "http://drive.google.com/uc?id=1vLvvmhNYnVptKdtqUxQA37XFM7pxc67a",
   location_name: "Blackbird Public House",
   address: "305 S. Downing St",
   city: "Denver",
@@ -329,7 +329,7 @@ event10 = Event.create!(
   organization_id: organization6.id,
   name: "Denver Cruiser Ride",
   description: "The Denver Cruiser Ride is a weekly pub crawl that meets on Wednesday nights to cycle safely through the streets of Denver. A mid week Mile High City tradition for over a decade, each of the 20 summer rides boasts a different theme, often involving zany costumes. With close to 60,000 people turning out over the season, the Denver Cruiser Ride has become the largest weekly bike party on the planet! Past themes have included Denver 1894, Mad Max, Bike Prom and Birds & Bees. Check the website Wednesday afternoon for that night's starting point.",
-  attachment: "https://scontent.fapa1-1.fna.fbcdn.net/v/t39.30808-6/288050540_5397982326925991_2124090801890684195_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=e3f864&_nc_ohc=BlUZMvwPrOQAX8YnZ8b&_nc_ht=scontent.fapa1-1.fna&oh=00_AfA21hdR-KwvOf11pibYEaV0gtmCGekQLk_c8PT_17MlXw&oe=636E8F6F",
+  attachment: "http://drive.google.com/uc?id=1DM09Zu6ub1dAeAWlk0lqTo8XlSCqVsHs",
   location_name: "Various - check website for starting point",
   address: "",
   city: "Denver",
@@ -349,7 +349,7 @@ event11 = Event.create!(
   description: "RunOBC is an all-inclusive run club welcoming all levels from beginners to seasoned runners. We meet every Monday at 6:30pm at the RiNo Taproom in Denver, CO. Route distances will be between 3 and 6 miles, with turn-around points generally available on all runs longer than 4 miles. We run rain or shine and don't forget to bring a headlamp and reflective gear for fall and winter runs.
   Monday Club runs are followed by $1 off pints for run club participants and socializing at the Odell Brewing Co. RiNo Taproom with your fellow RunOBC runners!
   Join our Strava club for more details and weekly routes!",
-  attachment: "https://scontent.fapa1-2.fna.fbcdn.net/v/t1.6435-9/68716119_366702003995814_7178909810878840832_n.jpg?stp=dst-jpg_p720x720&_nc_cat=107&ccb=1-7&_nc_sid=340051&_nc_ohc=zGHHALLn9SIAX_hN_X3&_nc_ht=scontent.fapa1-2.fna&oh=00_AfBO8MIjDFOMJgv_ya8yead9cPiGoNMuCejhl62Jil0Qew&oe=63907E1B",
+  attachment: "http://drive.google.com/uc?id=1bo4dDFoFgt1uAYdn85dl-R1r09s6Iwsn",
   location_name: "O'Dell Brewing - Five Points",
   address: "2945 Larimer St",
   city: "Denver",
@@ -368,7 +368,7 @@ event12 = Event.create!(
   name: "Run OBC - Sloan's Lake",
   description: "Come run with us every Sunday at Run Club. Meet at the brewery at 10:30AM, the run will start at 10:45AM.
   Afterwards, runners will get $5 pints and $10 Classic Pizza. All abilities welcome!",
-  attachment: "https://scontent.fapa1-2.fna.fbcdn.net/v/t39.30808-6/277681476_497204615272286_2615872766670248255_n.jpg?stp=dst-jpg_s960x960&_nc_cat=104&ccb=1-7&_nc_sid=340051&_nc_ohc=WWR_sR-l2xQAX-cKq13&_nc_ht=scontent.fapa1-2.fna&oh=00_AfBpsh_7zkwEMI_eImG5YYmWxoqkrRpvYS1OZKP9vT4CwA&oe=636EBCF1",
+  attachment: "http://drive.google.com/uc?id=1bo4dDFoFgt1uAYdn85dl-R1r09s6Iwsn",
   location_name: "O'Dell Brewing - Sloan's Lake",
   address: "1625 Perry St",
   city: "Denver",
@@ -387,7 +387,7 @@ event13 = Event.create!(
   name: "Denver Beer Runners",
   description: "This is a group for anyone interested in balancing fitness with the enjoyment of craft beer in Denver. Every Wednesday night a group of runners with varying experience meets at a local brewery or craft beer bar and runs between 3-5 miles returning for post-run beer.
   Running routes are determined several days in advance and are posted in each meetup. We look forward to running and enjoying some beer with you!",
-  attachment: "https://scontent.fapa1-2.fna.fbcdn.net/v/t1.6435-9/96510368_10106914227574481_5813035289341329408_n.jpg?stp=dst-jpg_s960x960&_nc_cat=109&ccb=1-7&_nc_sid=8631f5&_nc_ohc=4NQ0C8tojAcAX_jR2yf&_nc_ht=scontent.fapa1-2.fna&oh=00_AfDFkxhydeRTqEZZuCzx8UU0Z5LnNY_GUOdUNhtcGF-w5A&oe=63908C9F",
+  attachment: "http://drive.google.com/uc?id=1oxbEhcx9luo7mVGHrVkWiAxYovWICiQo",
   location_name: "Various - check website for starting point",
   address: "",
   city: "Denver",

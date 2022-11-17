@@ -10,7 +10,7 @@ export default function Home() {
         src={NP}
         alt="People running from November Project"
       ></img>
-      <h1 class="m-6 p-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl text-purple-600 dark:text-purple-500">
+      <h1 class="m-6 p-4 text-4xl font-extrabold leading-none md:text-5xl lg:text-6xl text-purple-600 dark:text-purple-500">
         Free Fitness.
         <span class="text-gray-900  dark:text-white px-2">
           It's what we're all about.

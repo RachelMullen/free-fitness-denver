@@ -1,7 +1,5 @@
 class User < ApplicationRecord
-
     has_secure_password
-    validates :email, presence: true
 
     has_many :events, :class_name => 'Organization' ,:foreign_key => "organizer_id"
     has_many :organizations, :class_name => 'Organization', :foreign_key => "organizer_id"
@@ -19,5 +17,7 @@ class User < ApplicationRecord
     has_many :events, through: :following_events
     
     has_one_attached :profile_picture
+
+    validates :email, presence: true
 
 end

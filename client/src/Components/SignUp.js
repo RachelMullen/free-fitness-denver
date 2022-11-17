@@ -8,28 +8,31 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   //Signs up new user
   function handleSubmit(e) {
     e.preventDefault();
+    setIsLoading(true);
 
-    const formData = new FormData();
-    formData.append("email", email);
-    formData.append("name", name);
-    formData.append("password", password);
-    formData.append("password_confirmation", passwordConfirmation);
-    formData.append("bio", bio);
-    formData.append("profile_picture", profilePicture);
+    const formData = new FormData()
+    formData.append("email", email)
+    formData.append("name", name)
+    formData.append("password", password)
+    formData.append("password_confirmation", passwordConfirmation)
+    formData.append("bio", bio)
+    formData.append("profile_picture", profilePicture)
 
     fetch("/signup", {
       method: "POST",
-      body: formData,
+      body: formData
     }).then((r) => {
+      setIsLoading(false);
       if (r.ok) {
         r.json().then((formData) => setCurrentUser(formData));
         setLoggedIn(true);
-        navigate(`/profile`);
+        navigate("/profile");
       }
     });
   }
@@ -87,8 +90,8 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
                 </label>
                 <input
                   type="password"
-                  name="password"
-                  id="password"
+                  name="password_confirmation"
+                  id="password_confirmation"
                   placeholder="••••••••"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                   required
@@ -156,7 +159,7 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
                 type="submit"
                 class="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 shadow-xl focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
               >
-                SIGN UP
+                {isLoading ? "Loading..." : "SIGN UP"}
               </button>
               <div class="text-lg font-lg text-gray-900dark:text-gray-300 text-center">
                 <p class="italic">Already have an account?</p>

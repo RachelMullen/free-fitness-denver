@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Login({ setCurrentUser, setLoggedIn }) {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -19,6 +20,7 @@ export default function Login({ setCurrentUser, setLoggedIn }) {
   //Logs in User
   function handleSubmit(e) {
     e.preventDefault();
+    setIsLoading(true);
     fetch("/login", {
       method: "POST",
       headers: {
@@ -26,6 +28,7 @@ export default function Login({ setCurrentUser, setLoggedIn }) {
       },
       body: JSON.stringify(formData),
     }).then((r) => {
+      setIsLoading(false);
       if (r.ok) {
         r.json().then((formData) => setCurrentUser(formData));
         setLoggedIn(true);
@@ -83,7 +86,7 @@ export default function Login({ setCurrentUser, setLoggedIn }) {
                 type="submit"
                 class="w-full shadow-xl text-white bg-teal-400 hover:bg-teal-500 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
               >
-                LOGIN
+                {isLoading ? "Loading..." : "LOGIN"}
               </button>
               <div class="text-lg font-lg text-gray-100 dark:text-gray-300 text-center">
                 <p class="italic">New User?</p>

@@ -14,31 +14,23 @@ import EventPage from "./EventPage";
 import EventDetails from "./EventDetails";
 import OrganizationDetails from "./OrganizationDetails";
 import ProfileEdit from "./ProfileEdit";
+import NewOrganizationForm from "./NewOrganizationForm";
+
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(false); //or false?
   const [loggedIn, setLoggedIn] = useState(false);
-  const [organizations, setOrganizations] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   //Grabs user information for authentication and authorization
   useEffect(() => {
-    setIsLoading(true);
     fetch("/me").then((r) => {
       if (r.ok) {
-        setLoggedIn(true);
         r.json().then((user) => setCurrentUser(user));
       }
     });
   }, [loggedIn]);
 
-  useEffect(() => {
-    fetch("/organizations")
-      .then((r) => r.json())
-      .then((organizations) => {
-        setOrganizations(organizations);
-      });
-  }, []);
+  console.log(loggedIn);
 
   // const deleteUser = (id) => setCurrentUser((current) => current.filter((p) => p.id !== id));
 
@@ -71,6 +63,12 @@ export default function App() {
               />
             }
           />
+          {currentUser && (
+            <Route
+              path="/profile"
+              element={<Profile currentUser={currentUser} />}
+            />
+          )}
           <Route
             path="/profile"
             element={<Profile currentUser={currentUser} />}
@@ -89,6 +87,16 @@ export default function App() {
             path="/organizations/:id"
             element={
               <OrganizationDetails
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+                    <Route
+            exact
+            path="/organizations/new"
+            element={
+              <NewOrganizationForm
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
@@ -118,7 +126,6 @@ export default function App() {
               <ProfileEdit
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
-                organizations={organizations}
               />
             }
           />

@@ -1,8 +1,8 @@
 class OrganizationsController < ApplicationController
-    skip_before_action :authorize
+    # skip_before_action :authorize
 
     def index
-        render json: Organization.all.order(:name), status: :ok
+        render json: Organization.all.order(:name)
     end
 
     #Show user Organizations

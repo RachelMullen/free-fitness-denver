@@ -14,7 +14,7 @@ export default function EventCard({ event }) {
           <div class="">
             <img src={attachment} alt={name} class="rounded-t-lg" />{" "}
             <div class="">
-              <h5 class="mb-2 p-4 text-2xl font-bold tracking-tight bg-purple-700 text-white">
+              <h5 class="mb-2 p-4 text-2xl font-bold bg-purple-700 text-white">
                 {name}
               </h5>
               <p class="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400">

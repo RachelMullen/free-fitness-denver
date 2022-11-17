@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   #PROFILE
   patch "/profile/:id", to: "users#update"
   get "/profile/:id", to: "users#destroy"
-  get "profile", to: "users#show"
+  # get "profile", to: "users#show"
+
+  post "/organizations/new", to: "organizations#create"
 
   get '*path',
       to: 'fallback#index',

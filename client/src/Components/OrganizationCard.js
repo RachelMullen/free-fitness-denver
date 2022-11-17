@@ -19,7 +19,7 @@ export default function OrganizationCard({ organization }) {
               alt={name}
               class="rounded-t-lg max-w-full place-self-center self-center content-center"
             />
-            <h5 class="mb-4 p-1.5 text-2xl font-bold tracking-tight bg-teal-400 text-white">
+            <h5 class="mb-4 p-1.5 text-2xl font-bold bg-teal-400 text-white">
               {name}
             </h5>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">

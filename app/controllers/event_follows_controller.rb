@@ -1,8 +1,9 @@
 class EventFollowsController < ApplicationController
-    skip_before_action :authorize
+    # skip_before_action :authorize
+
     wrap_parameters format: []
     def create
-        event_follow = EventFollow.create!)(event_follow_params)
+        event_follow = EventFollow.create!(event_follow_params)
         render json: event_follow, status: :created
       end
 
