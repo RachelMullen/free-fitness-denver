@@ -52,7 +52,7 @@ export default function NewOrganizationForm({ currentUser }) {
             <form onSubmit={handleSubmit} class="space-y-6">
               <div>
                 <h1 class=" text-center mb-4 text-3xl font-medium text-gray-900 dark:text-white">
-                  CREATE A NEW ORGANIZATION
+                  CREATE A NEW GROUP
                 </h1>
                 <label
                   htmlFor="name"
@@ -133,7 +133,7 @@ export default function NewOrganizationForm({ currentUser }) {
                 </label>{" "}
               </div>
 
-              <button type="submit" class=" text-purple-600 ">ADD ORGANIZATION</button>
+              <button type="submit" class=" text-purple-600 ">ADD GROUP</button>
             </form>
           </div>
         </div>
