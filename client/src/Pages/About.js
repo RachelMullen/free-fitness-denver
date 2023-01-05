@@ -34,11 +34,11 @@ export default function About() {
           physical benefits of movement.{" "}
           <Link to="/signup" class="md:text-purple-700">
             Sign up
-          </Link>
+          </Link> 
           or
           <Link to="/login" class="md:text-purple-700">
             log in
-          </Link>
+          </Link> 
           and start moving forward.
         </p>
         <p class="my-6 text-lg font-normal text-gray-500 italic">

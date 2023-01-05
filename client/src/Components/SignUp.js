@@ -168,7 +168,7 @@ export default function SignUp({ setCurrentUser, setLoggedIn }) {
                     to="/login"
                     class="inline-flex items-center font-extrabold text-purple-600 dark:text-purple-500 hover:underline text-lg"
                   >
-                    Login
+                    Log in
                     <svg
                       aria-hidden="true"
                       class="ml-1 w-5 h-5"
