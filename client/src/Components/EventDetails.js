@@ -67,7 +67,12 @@ export default function EventDetail({ currentUser, deleteEvent }) {
               <p>{event.announcements}</p>
               <br />
               <h2 class="object-center mb-7 items-center content-center self-center text-center">
-                <a href={`${event.link}`} class="hover:underline">
+                <a
+                  href={`${event.link}`}
+                  class="hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Website
                 </a>{" "}
               </h2>
@@ -76,6 +81,8 @@ export default function EventDetail({ currentUser, deleteEvent }) {
                 <SocialIcon
                   url={`${event.social_media}`}
                   class="hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   Socials
                 />
               </h2>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+var { SocialIcon } = require("react-social-icons");
 
 // User can follow Organization
 
@@ -84,16 +85,23 @@ export default function OrganizationDetails({ currentUser }) {
               <p>{organization.announcements}</p>
               <br />
               <h2 class="object-center mb-7 items-center content-center self-center text-center">
-                <a href={`${organization.link}`} class="hover:underline">
+                <a
+                  href={`${organization.link}`}
+                  class="hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Website
                 </a>{" "}
-                | |
-                <a
-                  href={`${organization.social_media}`}
+              </h2>
+              <h2 class="object-center mb-7 items-center content-center self-center text-center">
+                <SocialIcon
+                  url={`${organization.social_media}`}
                   class="hover:underline"
-                >
+                  target="_blank"
+                  rel="noopener noreferrer"
                   Socials
-                </a>
+                />
               </h2>
               <div class="flex-col flex">
                 <div class="mt-4 flex max-w-sm flex-col flex-wrap object-center self-center content-center text-xl text-center items-center px-4 space-y-1 rounded-lg h-auto w-auto bg-purple-700 py-4">
