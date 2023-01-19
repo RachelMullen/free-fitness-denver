@@ -39,7 +39,7 @@ Users can:
   - [x] Edit/Update
   - [x] Delete
 - [x] Groups
-  - [ ] View
+  - [x] View
   - [ ] Create
   - [ ] Edit/Update
   - [ ] Delete
