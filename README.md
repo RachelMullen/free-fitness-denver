@@ -43,9 +43,9 @@ Users can:
   - [ ] Create
   - [ ] Edit/Update
   - [ ] Delete
-- [x] Comments
-  - [x] View
-  - [x] Create
+- [x] Following
+  - [ ] View
+  - [ ] Create
   - [ ] Edit/Update
   - [ ] Delete
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
