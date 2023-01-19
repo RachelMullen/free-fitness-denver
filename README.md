@@ -1,24 +1,56 @@
-# README
+## FREE FITNESS DENVER
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## MOTIVATION
 
-Things you may want to cover:
+Free Fitness Denver was developed as a one-stop shop for free fitness activities and events in Denver. Born out of community demand, Free Fitness Denver allows users to view, add, and edit fitness activities across the city.
 
-* Ruby version
+This app is still under development, with plans to deploy to freefitnessdenver.org in the future.
 
-* System dependencies
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-* Configuration
+## BUILT WITH
 
-* Database creation
+- React
+- Ruby
+- Sinatra
+- Active Record
+- Active Storage
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-* Database initialization
+## USAGE & FEATURES
 
-* How to run the test suite
+Free Fitness Denver features authentication and authorization for signup and login.
 
-* Services (job queues, cache servers, search engines, etc.)
+Users can:
 
-* Deployment instructions
+- Login and sign up for an an account.
+- View and add free fitness events and activities
+- View free fitness groups
+- View, edit, and delete their profile
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-* ...
+## ROADMAP
+
+- [x] Signup
+- [x] Login
+- [x] Profile
+  - [x] View
+  - [x] Create
+  - [x] Edit/Update
+  - [x] Delete
+- [x] Groups
+  - [ ] View
+  - [ ] Create
+  - [ ] Edit/Update
+  - [ ] Delete
+- [x] Comments
+  - [x] View
+  - [x] Create
+  - [ ] Edit/Update
+  - [ ] Delete
+  <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## MAINTAINERS
+
+- Rachel Mullen: https://www.linkedin.com/in/racheljmullen/
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
