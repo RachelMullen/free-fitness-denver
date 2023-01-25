@@ -1,6 +1,6 @@
 ## FREE FITNESS DENVER
 
-![FreeFitnessDenver](client/src/assets/Free Fitness Denver.png)
+![FreeFitnessDenver](client/src/assets/Free%20Fitness%20Denver.png)
 
 ## MOTIVATION
 
