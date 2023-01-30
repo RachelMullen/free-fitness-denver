@@ -1,5 +1,7 @@
 ## FREE FITNESS DENVER
 
+![FreeFitnessDenver](client/src/assets/Free%20Fitness%20Denver.png)
+
 ## MOTIVATION
 
 Free Fitness Denver was developed as a one-stop shop for free fitness activities and events in Denver. Born out of community demand, Free Fitness Denver allows users to view, add, and edit fitness activities across the city.
